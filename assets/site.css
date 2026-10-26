@@ -257,3 +257,13 @@ footer{letter-spacing:.04em}
 .g3d-bar i{position:absolute; inset:0; background:#9c6468; transform-origin:0 50%; transform:scaleX(0)}
 .g3d-foot .hand{margin-left:auto; color:#9c6468; font-size:1.2em}
 @media (max-width:760px){.g3d-foot .hand{display:none}}
+
+/* Hero welcome sound button */
+.frame .sound{position:absolute; right:18px; bottom:16px; display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(243,236,225,.55); background:rgba(43,36,32,.55); color:#f3ece1; font:500 11px/1 var(--body); letter-spacing:.2em; text-transform:uppercase; padding:11px 16px; cursor:pointer; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); transition:background .3s, color .3s}
+.frame .sound:hover,.frame .sound[aria-pressed="true"]{background:#f3ece1; color:#2b2420}
+.frame .sound .ico{font-size:14px; letter-spacing:0}
+@media (max-width:760px){
+  .frame video{object-position:38% 50%}
+  .frame .tag{left:12px; bottom:58px; font-size:14px}
+  .frame .sound{left:12px; right:auto; bottom:12px}
+}

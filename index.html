@@ -48,10 +48,11 @@
     <div class="wrap">
       <div class="hero-media" id="heroMedia">
         <div class="frame">
-          <video autoplay muted loop playsinline poster="assets/hero-poster.jpg" preload="auto">
+          <video id="heroVideo" autoplay muted loop playsinline poster="assets/hero-poster.jpg" preload="auto">
             <source src="assets/hero.mp4" type="video/mp4">
           </video>
           <span class="tag">Hi, I’m Mrs Digital, your AI twin guide</span>
+          <button class="sound" id="heroSound" type="button" aria-pressed="false"><span class="ico" aria-hidden="true">🔊</span><span class="lbl">Hear our welcome</span></button>
         </div>
       </div>
       <div class="facts">
@@ -289,5 +290,18 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="assets/gallery3d.js"></script>
+<script>
+(function(){
+  const v=document.getElementById('heroVideo'), b=document.getElementById('heroSound');
+  if(!v||!b) return;
+  const lbl=b.querySelector('.lbl'), ico=b.querySelector('.ico');
+  function set(on){ b.setAttribute('aria-pressed',on); lbl.textContent=on?'Sound off':'Hear our welcome'; ico.textContent=on?'🔈':'🔊'; }
+  b.addEventListener('click',()=>{
+    if(v.muted){ v.muted=false; v.currentTime=0; v.loop=false; v.play().catch(()=>{}); set(true); }
+    else { v.muted=true; v.loop=true; v.play().catch(()=>{}); set(false); }
+  });
+  v.addEventListener('ended',()=>{ v.muted=true; v.loop=true; v.currentTime=0; v.play().catch(()=>{}); set(false); });
+})();
+</script>
 </body>
 </html>
