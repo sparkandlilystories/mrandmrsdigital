@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Get a Quote · Mr &amp; Mrs Digital</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* Contact: a letter, not a form — ruled lines on ivory, the reply promise beside it, everything in writing. */
+body{margin:0; font-size:16px}
+:root{padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+.ct{display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(32px,6vw,96px); padding-block:56px 88px; align-items:start}
+.ct-side{display:grid; gap:22px; position:sticky; top:96px}
+.ct-side h1{font-size:clamp(46px,6vw,88px)}
+.ct-side p{color:var(--muted); max-width:42ch; font-size:17px}
+.next{list-style:none; margin:8px 0 0; padding:0; border-top:1px solid var(--brass)}
+.next li{display:grid; grid-template-columns:auto 1fr; gap:14px; padding:14px 0; border-bottom:1px solid var(--line)}
+.next b{font:500 28px/1 var(--display); color:var(--brass)}
+.next span{font-size:15px; color:var(--ink)}
+.next small{display:block; color:var(--muted); font-size:14px; margin-top:2px}
+.letter{background:var(--surface); border:1px solid var(--line); padding:clamp(24px,4vw,48px); display:grid; gap:26px; min-width:0}
+.letter h2{font-size:clamp(28px,3vw,40px)}
+.field{display:grid; gap:6px}
+.field label,.legend{font:500 11px/1 var(--body); letter-spacing:.22em; text-transform:uppercase; color:var(--muted)}
+.field input,.field textarea{font:400 17px/1.5 var(--body); color:var(--ink); background:transparent; border:0; border-bottom:1px solid var(--line); padding:10px 0; border-radius:0; width:100%; min-width:0}
+.field textarea{min-height:150px; resize:vertical; background-image:repeating-linear-gradient(transparent 0 33px, var(--line) 33px 34px); line-height:34px; padding-top:0; border-bottom:0}
+.field input:focus,.field textarea:focus{outline:none; border-color:var(--rose)}
+.field input:focus-visible,.field textarea:focus-visible{box-shadow:0 1px 0 0 var(--rose)}
+.row{display:grid; grid-template-columns:1fr 1fr; gap:24px}
+@media (max-width:620px){.row{grid-template-columns:1fr}}
+.needs{border:0; margin:0; padding:0; display:grid; gap:12px; min-width:0}
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.chips label{position:relative; cursor:pointer}
+.chips input{position:absolute; opacity:0; inset:0; cursor:pointer}
+.chips span{display:block; border:1px solid var(--line); padding:9px 14px; font:italic 500 18px/1 var(--display); transition:background .2s, border-color .2s, color .2s}
+.chips input:checked + span{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+.chips input:focus-visible + span{outline:2px solid var(--rose); outline-offset:2px}
+.hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
+.send{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap}
+.send small{color:var(--muted); font-size:13px; max-width:34ch}
+.status{font:italic 500 19px/1.4 var(--display); padding:16px 18px; border:1px solid var(--line); background:var(--bg)}
+.status.ok{border-color:var(--brass)}
+.status.err{border-color:var(--rose); color:var(--rose)}
+.err-msg{color:var(--rose); font-size:13px; min-height:1em}
+@media (max-width:860px){.ct{grid-template-columns:1fr}.ct-side{position:static}}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html">Mr &amp; Mrs Digital<sup>®</sup></a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="webdesign.html">Webdesign</a></li>
+      <li><a href="photography.html">Photography</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="custom-packages.html">Packages</a></li>
+      <li><a href="price-list.html">Price List</a></li>
+    </ul>
+    <a class="btn" href="contact-us.html" aria-current="page">Get a Quote</a>
+  </div>
+</header>
+
+<main class="wrap ct">
+  <aside class="ct-side">
+    <span class="eyebrow">Get a quote</span>
+    <h1>Ready to <em>create?</em></h1>
+    <p>Tell us about your product and what you need. Everything happens in writing, so you always have a record of what we agreed.</p>
+    <ol class="next" aria-label="What happens next">
+      <li><b>1</b><span>You send this message<small>A few lines is enough. Photos can come later.</small></span></li>
+      <li><b>2</b><span>We reply in writing<small>With ideas and a clear quote.</small></span></li>
+      <li><b>3</b><span>We create<small>And refine until you’re happy. Revisions are unlimited.</small></span></li>
+    </ol>
+  </aside>
+
+  <form class="letter" id="quote" novalidate>
+    <h2>Tell us about your project</h2>
+    <div class="row">
+      <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="jane@yourbrand.com" required></div>
+    </div>
+    <div class="field"><label for="f-company">Company <span style="text-transform:none;letter-spacing:0">(optional)</span></label><input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Your brand or shop"></div>
+    <fieldset class="needs">
+      <legend class="legend">What do you need?</legend>
+      <div class="chips">
+        <label><input type="checkbox" name="needs" value="Product photos" id="n-photo"><span>Product photos</span></label>
+        <label><input type="checkbox" name="needs" value="Product videos" id="n-video"><span>Product videos</span></label>
+        <label><input type="checkbox" name="needs" value="UGC videos" id="n-ugc"><span>UGC videos</span></label>
+        <label><input type="checkbox" name="needs" value="Website" id="n-web"><span>A website</span></label>
+        <label><input type="checkbox" name="needs" value="Monthly plan" id="n-plan"><span>A monthly plan</span></label>
+        <label><input type="checkbox" name="needs" value="Not sure yet" id="n-unsure"><span>Not sure yet</span></label>
+      </div>
+    </fieldset>
+    <div class="field"><label for="f-message">Message</label><textarea id="f-message" name="message" rows="5" placeholder="Dear Mr &amp; Mrs Digital…" required></textarea></div>
+    <div class="hp" aria-hidden="true"><label for="f-website">Leave this empty</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+    <p class="err-msg" id="err" role="alert"></p>
+    <div class="send">
+      <small>We only use your details to reply to you.</small>
+      <button class="btn" type="submit" id="sendBtn">Send message</button>
+    </div>
+    <p class="status" id="status" hidden></p>
+  </form>
+</main>
+
+<footer><div class="wrap"><span>© 2024–2026 Mr &amp; Mrs Digital. All rights reserved.</span><span>Norwich, UK</span></div></footer>
+<script>
+(function(){
+  const nav=document.getElementById('nav'); addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>8),{passive:true});
+  // Set this to the form service address (e.g. a Formspree endpoint) when the site moves to its own hosting.
+  const FORM_ENDPOINT = '';
+  const form=document.getElementById('quote'), err=document.getElementById('err'), status=document.getElementById('status'), btn=document.getElementById('sendBtn');
+  form.addEventListener('submit', async e=>{
+    e.preventDefault(); err.textContent=''; status.hidden=true;
+    const d=new FormData(form);
+    if(d.get('website')) return;
+    const name=(d.get('name')||'').trim(), email=(d.get('email')||'').trim(), msg=(d.get('message')||'').trim();
+    if(!name){ err.textContent='Please add your name.'; form.elements.name.focus(); return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.textContent='Please add an email address we can reply to, like jane@yourbrand.com.'; form.elements.email.focus(); return; }
+    if(msg.length < 5){ err.textContent='Please write a few words about your project.'; form.elements.message.focus(); return; }
+    const payload={name, email, company:(d.get('company')||'').trim(), needs:d.getAll('needs').join(', '), message:msg};
+    if(!FORM_ENDPOINT){
+      status.className='status'; status.hidden=false;
+      status.textContent='This is the preview of the new site, so nothing was sent yet. On the live site this message goes straight to our inbox.';
+      return;
+    }
+    btn.disabled=true; btn.textContent='Sending…';
+    try{
+      const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
+      if(!r.ok) throw new Error(r.status);
+      form.reset(); status.className='status ok'; status.hidden=false;
+      status.textContent='Thank you, '+name.split(' ')[0]+'. Your message is with us, and we’ll reply in writing.';
+    }catch(_){
+      status.className='status err'; status.hidden=false;
+      status.textContent='Your message couldn’t be sent just now. Please try again in a minute.';
+    }finally{ btn.disabled=false; btn.textContent='Send message'; }
+  });
+})();
+</script>
+</body>
+</html>

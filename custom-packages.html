@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Custom Packages · Mr &amp; Mrs Digital</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* Custom packages: a bespoke-tailoring brief — big plinth image, what can go in the package, then how a proposal comes together. */
+body{margin:0; font-size:16px}
+:root{padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+.cp-hero{display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,72px); align-items:center; padding-block:56px 72px}
+.cp-hero h1{font-size:clamp(44px,6vw,88px)}
+.cp-hero .txt{display:grid; gap:22px}
+.cp-hero p{color:var(--muted); font-size:17px; max-width:46ch}
+.cp-hero figure{margin:0; outline:1px solid var(--line); outline-offset:12px}
+.cp-hero img{width:100%; aspect-ratio:4/3; object-fit:cover; display:block}
+@media (max-width:860px){.cp-hero{grid-template-columns:1fr}}
+.block{padding-block:72px 24px; border-top:1px solid var(--line)}
+.block-head{display:grid; grid-template-columns:1fr 1.2fr; gap:32px; align-items:end; margin-bottom:32px}
+.block-head h2{font-size:clamp(34px,4.4vw,58px)}
+.block-head p{color:var(--muted); max-width:48ch}
+@media (max-width:760px){.block-head{grid-template-columns:1fr; gap:12px}}
+.inside{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--ink)}
+.inside div{padding:22px 22px 18px 0}
+.inside div + div{padding-left:22px; border-left:1px solid var(--line)}
+.inside h3{font-size:26px}
+.inside p{color:var(--muted); font-size:15px; margin-top:8px}
+@media (max-width:860px){.inside{grid-template-columns:1fr}.inside div + div{border-left:0; padding-left:0; border-top:1px solid var(--line)}}
+.addons{display:flex; flex-wrap:wrap; gap:12px 28px; margin-top:8px}
+.addons span{font:italic 500 24px/1.3 var(--display); border-bottom:1px solid var(--brass); padding-bottom:4px}
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--ink)}
+.steps div{padding:22px 22px 8px 0}
+.steps div + div{padding-left:22px; border-left:1px solid var(--line)}
+.steps b{display:block; font:500 44px/1 var(--display); color:var(--brass)}
+.steps h3{font-size:24px; margin-top:12px}
+.steps p{color:var(--muted); font-size:15px; margin-top:8px}
+@media (max-width:860px){.steps{grid-template-columns:1fr}.steps div + div{border-left:0; padding-left:0; border-top:1px solid var(--line)}.steps div{padding-bottom:20px}}
+.promise{margin-top:28px; font:italic 500 22px/1.4 var(--display)}
+.promise em{color:var(--rose)}
+.see-prices{margin-top:20px}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html">Mr &amp; Mrs Digital<sup>®</sup></a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="webdesign.html">Webdesign</a></li>
+      <li><a href="photography.html">Photography</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="custom-packages.html" aria-current="page" style="color:var(--rose)">Packages</a></li>
+      <li><a href="price-list.html">Price List</a></li>
+    </ul>
+    <a class="btn" href="contact-us.html">Get a Quote</a>
+  </div>
+</header>
+
+<main>
+  <section class="wrap cp-hero">
+    <div class="txt">
+      <span class="eyebrow">Custom packages</span>
+      <h1>Built around <em>your brand.</em></h1>
+      <p>Need something the price list doesn’t cover? Tell us what you’re launching and we’ll put together a package that fits your goals, timeline and budget.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="contact-us.html">Tell us about your launch</a>
+        <a class="btn ghost" href="price-list.html">See the price list</a>
+      </div>
+    </div>
+    <figure><img src="assets/photo/plinths.jpg" alt="A serum bottle, a white sneaker and a perfume on three floating travertine plinths" style="object-position:50% 50%"></figure>
+  </section>
+
+  <div class="wrap">
+    <section class="block">
+      <div class="block-head">
+        <div style="display:grid;gap:12px"><span class="eyebrow">What goes in</span><h2>Made to measure.</h2></div>
+        <p>Every package is cut to fit, like a tailored suit rather than one off the rail.</p>
+      </div>
+      <div class="inside">
+        <div><h3>Flexible scope</h3><p>From single hero visuals to complete campaigns.</p></div>
+        <div><h3>Art direction</h3><p>Professional art direction and prompt engineering, so every image looks like it belongs to the same brand.</p></div>
+        <div><h3>Add-ons</h3><p>Pick the extras your launch needs, listed below.</p></div>
+      </div>
+      <div class="addons" style="margin-top:36px" aria-label="Optional add-ons">
+        <span>3D product spins</span><span>Lifestyle scenes</span><span>Animated videos</span><span>Consistent character creation</span><span>and more</span>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block-head">
+        <div style="display:grid;gap:12px"><span class="eyebrow">How it starts</span><h2>Three simple steps.</h2></div>
+        <p>Everything happens in writing, so you always have a record of what we agreed.</p>
+      </div>
+      <div class="steps">
+        <div><b>1</b><h3>Send us a message</h3><p>Tell us about your products, your audience and your goals.</p></div>
+        <div><b>2</b><h3>Get a clear proposal</h3><p>What’s included, the price and the delivery date, in writing.</p></div>
+        <div><b>3</b><h3>We create</h3><p>You review, we refine until you’re happy. Revisions are unlimited.</p></div>
+      </div>
+      <p class="promise">No surprises, <em>no lock-in.</em></p>
+    </section>
+  </div>
+
+  <section class="sec" style="padding-top:40px">
+    <div class="wrap">
+      <div class="cta">
+        <span class="hand">With care, from Norwich</span>
+        <h2>Let’s create <em style="color:var(--brass)">together.</em></h2>
+        <p>Ready for unforgettable visuals? Tell us about your product and we’ll reply in writing with ideas and a clear quote.</p>
+        <a class="btn" href="contact-us.html">Get a Quote</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2024–2026 Mr &amp; Mrs Digital. All rights reserved.</span><span>Norwich, UK</span></div></footer>
+<script>
+(function(){ const nav=document.getElementById('nav'); addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>8),{passive:true}); })();
+</script>
+</body>
+</html>

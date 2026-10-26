@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Photography · Mr &amp; Mrs Digital</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* Photography: an editorial contact book — one pinned "liquid gold" moment, then chapters by category on ivory paper. */
+.ph-hero{padding-block:56px 40px; display:grid; gap:28px}
+.ph-hero h1{font-size:clamp(44px,6.6vw,96px); max-width:15ch}
+.ph-hero .lead{max-width:56ch; color:var(--muted); font-size:17px}
+.ph-perks{display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--brass); margin-top:12px}
+.ph-perks p{padding:18px 20px 0 0; font:italic 500 20px/1.3 var(--display); color:var(--ink)}
+.ph-perks p + p{padding-left:20px; border-left:1px solid var(--line)}
+@media (max-width:760px){.ph-perks{grid-template-columns:1fr}.ph-perks p + p{border-left:0; padding-left:0; border-top:1px solid var(--line); padding-top:14px}.ph-perks p{padding-bottom:14px}}
+
+/* liquid gold: four moments of one necklace, crossfaded by scroll */
+.gold-sec{position:relative; height:300vh; background:#efe4d4}
+.gold-sticky{position:sticky; top:0; height:100vh; height:100svh; overflow:hidden}
+.gold-sticky img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .2s linear}
+.gold-sticky img:first-child{opacity:1}
+.gold-cap{position:absolute; left:max(24px,5vw); bottom:max(32px,6vh); max-width:min(440px, 86vw); background:color-mix(in srgb, #fbf7f0 88%, transparent); padding:24px 26px; border:1px solid #d9cbbd; color:#2b2420; display:grid; gap:10px}
+.gold-cap .eyebrow{color:#a3855a}
+.gold-cap h2{font-size:clamp(30px,3.4vw,46px)}
+.gold-cap p{color:#73685f; font-size:15px}
+.gold-dots{display:flex; gap:6px; margin-top:4px}
+.gold-dots i{width:22px; height:1px; background:#d9cbbd}
+.gold-dots i.on{background:#9c6468}
+
+/* chapters */
+.chapter{padding-block:88px 24px; border-top:1px solid var(--line)}
+.chapter:first-of-type{border-top:0}
+.ch-head{display:grid; grid-template-columns:1fr 1.2fr; gap:32px; align-items:end; margin-bottom:32px}
+.ch-head h2{font-size:clamp(36px,4.6vw,62px)}
+.ch-head p{color:var(--muted); max-width:46ch}
+.grid{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
+.grid figure{margin:0; position:relative; overflow:hidden; background:var(--rose-soft)}
+.grid img{width:100%; height:100%; object-fit:cover; display:block; transition:transform 1.2s ease}
+.grid figure:hover img{transform:scale(1.03)}
+.grid figcaption{position:absolute; left:14px; bottom:12px; color:#fff; font:italic 500 18px/1.2 var(--display); text-shadow:0 1px 10px rgba(0,0,0,.55)}
+.s4{grid-column:span 4}.s5{grid-column:span 5}.s6{grid-column:span 6}.s7{grid-column:span 7}.s8{grid-column:span 8}.s12{grid-column:span 12}
+.fill{min-height:240px}.fill img{position:absolute; inset:0}
+.tall{aspect-ratio:3/4}.wide{aspect-ratio:4/3}.pano{aspect-ratio:16/7}.portrait{aspect-ratio:9/14}
+@media (max-width:860px){.ch-head{grid-template-columns:1fr; gap:12px}.grid{grid-template-columns:1fr 1fr; gap:10px}.s4,.s5,.s6,.s7,.s8{grid-column:span 1}.s12,.span2{grid-column:span 2}.pano{aspect-ratio:4/3}.s7,.s8{grid-column:span 2}.fill{aspect-ratio:4/3; min-height:0}.grid figure{min-width:0}.s4,.s5{grid-column:span 2; aspect-ratio:4/5}.pair .s4:not(:last-child){grid-column:span 1; aspect-ratio:9/14}}
+.note-line{margin-top:18px; color:var(--muted); font:italic 500 18px/1.4 var(--display)}
+.brands-line{padding-block:72px 16px}
+.brands-line p{font:500 clamp(26px,3vw,40px)/1.25 var(--display); max-width:30ch; text-wrap:balance}
+.brands-line p em{color:var(--rose)}
+@media (prefers-reduced-motion: reduce){
+  .gold-sec{height:auto}.gold-sticky{position:relative; height:auto; display:grid; grid-template-columns:1fr 1fr; gap:4px}
+  .gold-sticky img{position:static; opacity:1; aspect-ratio:4/3}
+  .gold-cap{position:static; grid-column:span 2; max-width:none}
+}
+body{margin:0; font-size:16px}
+:root{padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+</style>
+
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html">Mr &amp; Mrs Digital<sup>®</sup></a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="webdesign.html">Webdesign</a></li>
+      <li><a href="photography.html" aria-current="page" style="color:var(--rose)">Photography</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="custom-packages.html">Packages</a></li>
+      <li><a href="price-list.html">Price List</a></li>
+    </ul>
+    <a class="btn" href="contact-us.html">Get a Quote</a>
+  </div>
+</header>
+
+<main>
+  <section class="wrap ph-hero">
+    <span class="eyebrow">Photography</span>
+    <h1>Product photos that sell, <em>in any world you can imagine.</em></h1>
+    <p class="lead">Photorealistic AI imagery for brands and online stores, from impossible campaign scenes to clean e-commerce shots. No photoshoot needed, delivered in days.</p>
+    <div class="ph-perks">
+      <p>Unlimited revisions until you’re 100% satisfied.</p>
+      <p>No expensive photoshoots, models or studio rental.</p>
+      <p>For startups, e-commerce brands, Amazon sellers and agencies.</p>
+    </div>
+  </section>
+
+  <section class="gold-sec" aria-label="Liquid gold, four moments of one necklace">
+    <div class="gold-sticky" id="gold">
+      <img src="assets/photo/gold-necklace-drip.jpg" alt="Molten gold dripping above a travertine slab, a fine chain beginning to form">
+      <img src="assets/photo/gold-necklace-twist.jpg" alt="A ribbon of liquid gold twisting into a pendant in mid-air">
+      <img src="assets/photo/gold-necklace.jpg" alt="A delicate gold necklace with a drop pendant, gold droplets on the stone below">
+      <img src="assets/photo/gold-necklace-alt.jpg" alt="The finished gold necklace hanging still above a travertine slab">
+      <div class="gold-cap">
+        <span class="eyebrow">Jewellery</span>
+        <h2>Liquid gold.</h2>
+        <p>One necklace, four moments. The kind of scene that would take a studio, a pyrotechnician and a very brave jeweller. Here it took a few clear photos.</p>
+        <div class="gold-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="chapter">
+      <div class="ch-head">
+        <div style="display:grid;gap:12px"><span class="eyebrow">Beauty &amp; skincare</span><h2>Soft light, honest texture.</h2></div>
+        <p>Serums, creams and sets shown the way a premium shelf deserves: real reflections, real labels, nothing plastic.</p>
+      </div>
+      <div class="grid">
+        <figure class="s5 tall reveal"><img src="assets/photo/serum-editorial.jpg" alt="A frosted serum bottle with a gold dropper on a travertine block against a terracotta arch" loading="lazy"><figcaption>Serum, editorial</figcaption></figure>
+        <figure class="s7 fill reveal"><img src="assets/photo/skincare-set.jpg" alt="An unbranded three-piece skincare set on marble in dappled morning light" loading="lazy" style="object-position:50% 70%"><figcaption>Skincare set</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="chapter">
+      <div class="ch-head">
+        <div style="display:grid;gap:12px"><span class="eyebrow">Fragrance</span><h2>Light and dark, <em>same bottle.</em></h2></div>
+        <p>A fragrance is a mood before it is a product. We build the mood around your bottle, from airy and floral to deep and spiced.</p>
+      </div>
+      <div class="grid pair">
+        <figure class="s4 portrait reveal"><img src="assets/photo/white-perfume-blossom.jpg" alt="A white perfume bottle with a pink marble cap among blossoms by a mountain lake" loading="lazy"><figcaption>Blossom</figcaption></figure>
+        <figure class="s4 portrait reveal"><img src="assets/photo/fragrance-silk-light.jpg" alt="A hand holding a white perfume bottle on champagne silk with sliced citrus" loading="lazy"><figcaption>Silk, light</figcaption></figure>
+        <figure class="s4 portrait reveal"><img src="assets/photo/perfume-sculptural.jpg" alt="An unbranded faceted perfume bottle on dark wet stone with a splash of water" loading="lazy"><figcaption>Noir</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="chapter">
+      <div class="ch-head">
+        <div style="display:grid;gap:12px"><span class="eyebrow">Fashion &amp; footwear</span><h2>Places your product has never been.</h2></div>
+        <p>A desert at sunset, a gallery of stone plinths, a rooftop at golden hour. Your sneaker stays exactly your sneaker.</p>
+      </div>
+      <div class="grid">
+        <figure class="s4 portrait reveal"><img src="assets/photo/sneaker-desert.jpg" alt="A white unbranded leather sneaker floating above desert dunes at sunset" loading="lazy"><figcaption>Golden hour</figcaption></figure>
+        <figure class="s8 fill reveal"><img src="assets/photo/plinths.jpg" alt="A serum bottle, a white sneaker and a perfume on three floating travertine plinths" loading="lazy"><figcaption>The plinths</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="chapter">
+      <div class="ch-head">
+        <div style="display:grid;gap:12px"><span class="eyebrow">Food, tech &amp; the playful side</span><h2>Serious craft, <em>a little wit.</em></h2></div>
+        <p>Patisserie that looks good enough to eat, headphones caught between drawing and product, and a lipstick big enough to need its own film crew.</p>
+      </div>
+      <div class="grid">
+        <figure class="s4 portrait reveal"><img src="assets/photo/mango-dessert.jpg" alt="Mango-shaped patisserie desserts on gold plates on a beige marble counter" loading="lazy"><figcaption>Patisserie</figcaption></figure>
+        <figure class="s8 fill reveal"><img src="assets/photo/headphones.jpg" alt="Unbranded cream headphones, half wireframe and half photoreal, floating on cream" loading="lazy"><figcaption>Half drawn, half real</figcaption></figure>
+        <figure class="s7 wide reveal"><img src="assets/photo/lipstick-crew.jpg" alt="A giant gold lipstick surrounded by a tiny miniature film crew" loading="lazy"><figcaption>Lights, camera, lipstick</figcaption></figure>
+        <figure class="s5 wide reveal"><img src="assets/photo/cream-jar.jpg" alt="A giant cream jar with tiny skiers on the cream like a snowy slope" loading="lazy" style="object-position:50% 45%"><figcaption>Slopes</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="brands-line reveal">
+      <span class="eyebrow">Who we work with</span>
+      <p style="margin-top:14px">Beauty, fashion, jewellery, tech, home and food brands. Every project starts with <em>your product, your audience</em> and where the images will be used, so every visual has a job to do.</p>
+    </section>
+  </div>
+
+  <section class="sec" style="padding-top:40px">
+    <div class="wrap">
+      <div class="cta reveal">
+        <span class="hand">With care, from Norwich</span>
+        <h2>Let’s create <em style="color:var(--brass)">together.</em></h2>
+        <p>Ready for unforgettable visuals? Tell us about your product and we’ll reply in writing with ideas and a clear quote.</p>
+        <a class="btn" href="contact-us.html">Get a Quote</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2024–2026 Mr &amp; Mrs Digital. All rights reserved.</span><span>Norwich, UK</span></div></footer>
+
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const nav = document.getElementById('nav');
+  const sec = document.querySelector('.gold-sec');
+  const imgs = [...document.querySelectorAll('#gold img')];
+  const dots = [...document.querySelectorAll('.gold-dots i')];
+  const clamp = (v,a,b)=>Math.min(b,Math.max(a,v));
+  let ticking = false;
+  function frame(){
+    nav.classList.toggle('scrolled', scrollY > 8);
+    if(!reduce){
+      const r = sec.getBoundingClientRect();
+      const p = clamp(-r.top / (r.height - innerHeight), 0, 1);
+      const x = p * (imgs.length - 1);
+      imgs.forEach((im,i)=>{ im.style.opacity = i === 0 ? 1 : clamp(x - (i - 1), 0, 1).toFixed(3); });
+      const k = Math.round(x);
+      dots.forEach((d,i)=>d.classList.toggle('on', i === k));
+    }
+    ticking = false;
+  }
+  addEventListener('scroll', ()=>{ if(!ticking){ ticking = true; requestAnimationFrame(frame); } }, {passive:true});
+  addEventListener('resize', frame);
+  frame();
+  if(!reduce && 'IntersectionObserver' in window){
+    const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.remove('pre'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(el => { if(el.getBoundingClientRect().top > innerHeight){ el.classList.add('pre'); io.observe(el); } });
+  }
+})();
+</script>
+
+</body>
+</html>
