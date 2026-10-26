@@ -14,7 +14,7 @@
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.75));
   renderer.outputEncoding = T.sRGBEncoding;
   renderer.toneMapping = T.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.05;
+  renderer.toneMappingExposure = .82;
   renderer.physicallyCorrectLights = true;
 
   const scene = new T.Scene();
@@ -29,7 +29,7 @@
     fragmentShader:'uniform vec3 top; uniform vec3 low; uniform vec3 sun; varying vec3 vP; void main(){ float h=clamp(vP.y*1.6+0.12,0.0,1.0); vec3 c=mix(low,top,pow(h,0.8)); float s=pow(max(dot(vP,normalize(vec3(-0.35,0.22,-1.0))),0.0),24.0); c+=sun*s*0.55; gl_FragColor=vec4(c,1.0); }'
   });
   scene.add(new T.Mesh(skyGeo, skyMat));
-  scene.fog = new T.Fog(SKY_LOW.clone().lerp(SKY_TOP,.3), 28, 120);
+  scene.fog = new T.Fog(SKY_LOW.clone().lerp(SKY_TOP,.3), 55, 210);
 
   // Environment for glass reflections, rendered from a soft gradient room
   const pmrem = new T.PMREMGenerator(renderer);
@@ -43,15 +43,15 @@
   scene.environment = pmrem.fromScene(envScene, 0.02).texture;
 
   // Lights
-  const sun = new T.DirectionalLight(0xfff0dc, 3.2); sun.position.set(-18, 14, -22); scene.add(sun);
-  scene.add(new T.HemisphereLight(0xfffaf2, 0xd8b0a8, 1.1));
+  const sun = new T.DirectionalLight(0xfff0dc, 2.4); sun.position.set(-18, 14, -22); scene.add(sun);
+  scene.add(new T.HemisphereLight(0xfffaf2, 0xc99a92, .8));
   const fill = new T.PointLight(0xffd9b0, 30, 30, 2); fill.position.set(3, 4, 6); scene.add(fill);
 
   // Dunes
   const DW = 220, DSEG = 120;
   const duneGeo = new T.PlaneGeometry(DW, DW, DSEG, DSEG); duneGeo.rotateX(-Math.PI/2);
   const base = duneGeo.attributes.position.array.slice();
-  const duneMat = new T.MeshStandardMaterial({color:new T.Color('#e8cfc4'), roughness:.92, metalness:0});
+  const duneMat = new T.MeshStandardMaterial({color:new T.Color('#d8aea2'), roughness:.95, metalness:0});
   const dunes = new T.Mesh(duneGeo, duneMat); dunes.position.y = -2.2; scene.add(dunes);
   function duneH(x, z, t){
     return Math.sin(x*.06 + t*.03)*1.6 + Math.sin(z*.045 + x*.02)*2.2 + Math.sin((x+z)*.11 - t*.05)*.45 + Math.max(0, Math.sin(x*.025 - z*.03))*2.4;
@@ -77,7 +77,7 @@
   layout.forEach(([x,y,z,r,m],i)=>{ const s=new T.Mesh(sg, m); s.position.set(x,y,z); s.scale.setScalar(r); s.userData={y, ph:i*1.7, sp:.35+(i%3)*.12}; scene.add(s); spheres.push(s); });
 
   // The hero: a perfume bottle with a brass cap, resting on a travertine plinth
-  const hero = new T.Group(); hero.position.set(0, 0, 0); scene.add(hero);
+  const hero = new T.Group(); hero.position.set(0, 0, 0); hero.scale.setScalar(1.55); scene.add(hero);
   const plinth = new T.Mesh(new T.BoxGeometry(3.2, 1.6, 3.2), new T.MeshStandardMaterial({color:'#efe3d2', roughness:.8}));
   plinth.position.y = -1.4; hero.add(plinth);
   const bottleGlass = new T.MeshPhysicalMaterial({color:0xffffff, metalness:0, roughness:.03, transmission:1, thickness:2.2, ior:1.5, transparent:true, envMapIntensity:1.6, clearcoat:1, attenuationColor:new T.Color('#f6dcc4'), attenuationDistance:3});
@@ -117,8 +117,8 @@
   const path = [
     {p:new T.Vector3(0, 7.5, 34), l:new T.Vector3(0, 2.5, -10)},
     {p:new T.Vector3(-5, 4, 18), l:new T.Vector3(0, 1.4, -4)},
-    {p:new T.Vector3(3.5, 2.4, 9), l:new T.Vector3(0, 1, 0)},
-    {p:new T.Vector3(.4, 1.6, 5.2), l:new T.Vector3(0, 1.05, 0)}
+    {p:new T.Vector3(3.8, 3, 11.5), l:new T.Vector3(0, 1.4, 0)},
+    {p:new T.Vector3(.6, 2.2, 7.4), l:new T.Vector3(0, 1.5, 0)}
   ];
   const tmpP = new T.Vector3(), tmpL = new T.Vector3();
   const ease = t => t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2;
@@ -135,16 +135,18 @@
   function resize(){
     const r = sec.querySelector('.dream-stage').getBoundingClientRect();
     W = r.width; H = r.height; renderer.setSize(W, H, false);
-    camera.aspect = W/H; camera.fov = W < 700 ? 52 : 38; camera.updateProjectionMatrix();
+    camera.aspect = W/H; camera.fov = W < 700 ? 52 : 38; camera.filmOffset = W < 760 ? 0 : -7; camera.updateProjectionMatrix();
   }
   addEventListener('resize', resize); resize();
 
   let mx=0, my=0, smx=0, smy=0;
   addEventListener('pointermove', e=>{ mx = e.clientX/innerWidth*2-1; my = e.clientY/innerHeight*2-1; }, {passive:true});
 
+  const forced = parseFloat(new URLSearchParams(location.search).get('p'));
   let prog = reduce ? .35 : 0, sprog = prog, visible = true, t0 = performance.now();
+  if(!isNaN(forced)){ prog = sprog = forced; }
   function readScroll(){
-    if(reduce) return;
+    if(reduce || !isNaN(forced)) return;
     const r = sec.getBoundingClientRect(), total = r.height - innerHeight;
     prog = Math.min(1, Math.max(0, -r.top / Math.max(1,total)));
     visible = r.bottom > 0 && r.top < innerHeight;
