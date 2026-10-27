@@ -14,7 +14,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%23F3ECE1%27/%3E%3Ctext x=%2716%27 y=%2722%27 font-family=%27Georgia%27 font-size=%2716%27 text-anchor=%27middle%27 fill=%27%239C6468%27%3EM%26amp;M%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -27,32 +27,41 @@
       <li><a href="photography">Photography</a></li>
       <li><a href="videos">Videos</a></li>
       <li><a href="custom-packages">Packages</a></li>
-      <li><a href="price-list">Price List</a></li>
+      <li><a href="price-list">Price list</a></li>
     </ul>
-    <a class="btn" href="contact-us">Get a Quote</a>
+    <a class="btn" href="contact-us">Get a quote</a>
   </div>
 </header>
 
 <main id="top">
   <section class="hero">
-    <div class="wrap hero-head">
-      <h1>Premium AI product photos and videos <em>for brands and online stores.</em></h1>
-      <div class="hero-side">
-        <p>From impossible campaign scenes to clean e-commerce shots, we create photorealistic visuals built around your product. No photoshoot, no studio hire, delivered in days.</p>
-        <div class="row">
-          <a class="btn" href="contact-us">Get a Quote</a>
-          <a class="btn ghost" href="#g3d">See our work</a>
-        </div>
+    <div class="hero-film" id="heroMedia">
+      <video id="heroVideo" autoplay muted loop playsinline poster="assets/hero-welcome.jpg" preload="auto" aria-label="Mrs Digital, as her AI twin, welcoming you in a sunlit studio">
+        <source src="assets/hero-welcome.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="wrap hero-greet">
+      <p class="greet">Hi, welcome to Mr&nbsp;&amp;&nbsp;Mrs Digital.</p>
+      <div class="hero-aside">
+        <button class="sound" id="heroSound" type="button" aria-pressed="false">
+          <span class="disc" aria-hidden="true">
+            <svg class="play" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>
+            <svg class="pause" viewBox="0 0 16 16"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" fill="currentColor"/></svg>
+          </span>
+          <span class="lbl">Hear Mrs Digital say hello</span>
+        </button>
+        <p class="caption">That’s me, as my AI twin. We made her the same way we make your visuals.</p>
       </div>
     </div>
     <div class="wrap">
-      <div class="hero-media" id="heroMedia">
-        <div class="frame">
-          <video id="heroVideo" autoplay muted loop playsinline poster="assets/hero-welcome.jpg" preload="auto">
-            <source src="assets/hero-welcome.mp4" type="video/mp4">
-          </video>
-          <span class="tag">Hi, I’m Mrs Digital, your AI twin guide</span>
-          <button class="sound" id="heroSound" type="button" aria-pressed="false"><span class="ico" aria-hidden="true">🔊</span><span class="lbl">Hear our welcome</span></button>
+      <div class="hero-intro">
+        <h1>Premium AI product photos and videos for brands and online stores.</h1>
+        <div class="side">
+          <p>From impossible campaign scenes to clean shop shots, we build photorealistic visuals around your product. No photoshoot, no studio hire, and most orders are ready in days.</p>
+          <div class="row">
+            <a class="btn" href="contact-us">Get a quote</a>
+            <a class="btn ghost" href="#g3d">See our work</a>
+          </div>
         </div>
       </div>
       <div class="facts">
@@ -294,8 +303,8 @@
 (function(){
   const v=document.getElementById('heroVideo'), b=document.getElementById('heroSound');
   if(!v||!b) return;
-  const lbl=b.querySelector('.lbl'), ico=b.querySelector('.ico');
-  function set(on){ b.setAttribute('aria-pressed',on); lbl.textContent=on?'Sound off':'Hear our welcome'; ico.textContent=on?'🔈':'🔊'; }
+  const lbl=b.querySelector('.lbl');
+  function set(on){ b.setAttribute('aria-pressed',on); lbl.textContent=on?'Turn the sound off':'Hear Mrs Digital say hello'; }
   b.addEventListener('click',()=>{
     if(v.muted){ v.muted=false; v.currentTime=0; v.loop=false; v.play().catch(()=>{}); set(true); }
     else { v.muted=true; v.loop=true; v.play().catch(()=>{}); set(false); }
