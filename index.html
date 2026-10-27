@@ -57,18 +57,12 @@
       <div class="hero-intro">
         <h1>Premium AI product photos and videos for brands and online stores.</h1>
         <div class="side">
-          <p>From impossible campaign scenes to clean shop shots, we build photorealistic visuals around your product. No photoshoot, no studio hire, and most orders are ready in days.</p>
+          <p>From impossible campaign scenes to clean shop shots, we build photorealistic visuals around your product. You never need to post it to us, revisions are unlimited, and every image is yours to use. Most orders are ready in days.</p>
           <div class="row">
             <a class="btn" href="contact-us">Get a quote</a>
             <a class="btn ghost" href="#g3d">See our work</a>
           </div>
         </div>
-      </div>
-      <div class="facts">
-        <div><b>Days</b><span>not weeks, for most single orders</span></div>
-        <div><b>Unlimited</b><span>revisions until you’re happy</span></div>
-        <div><b>Yours</b><span>full commercial use, every order</span></div>
-        <div><b>No shipping</b><span>a few clear product photos are enough</span></div>
       </div>
     </div>
   </section>
@@ -78,13 +72,11 @@
     <div class="lip-sticky">
       <canvas class="lip-canvas" id="lipCanvas" width="1100" height="628" role="img" aria-label="An unbranded dusty rose lipstick separating into its cap, bullet, sleeve and tube"></canvas>
       <div class="lip-copy">
-        <span class="eyebrow">How it works</span>
-        <div class="lip-bar" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i></div>
-        <div class="lip-steps">
-          <div class="lip-step on"><h2>Send us your product.</h2><p>A few clear photos from your phone are enough. No shipping, no studio.</p></div>
-          <div class="lip-step"><h2>We rebuild it, part by part.</h2><p>Every label, reflection and detail is checked, so it looks like your product and nothing else.</p></div>
-          <div class="lip-step"><h2>Then we put it anywhere.</h2><p>Campaign scenes, clean shop shots and scroll-stopping videos, delivered in days.</p></div>
-        </div>
+        <ol class="lip-steps">
+          <li class="lip-step on"><h2>Send us your product.</h2><p>A few clear photos from your phone are enough. No shipping, no studio.</p></li>
+          <li class="lip-step"><h2>We rebuild it, part by part.</h2><p>Every label, reflection and detail is checked, so it looks like your product and nothing else.</p></li>
+          <li class="lip-step"><h2>Then we put it anywhere.</h2><p>Campaign scenes, clean shop shots and scroll-stopping videos, delivered in days.</p></li>
+        </ol>
       </div>
     </div>
   </section>
@@ -256,7 +248,7 @@
   let loadedAll = false;
   function loadAll(){ if(loadedAll) return; loadedAll = true; for(let i=1;i<N-1;i++){ const im = new Image(); im.decoding='async'; im.src = src(i); frames[i]=im; } }
   new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)) loadAll(); }, {rootMargin:'800px 0px'}).observe(lipSec);
-  const steps = [...document.querySelectorAll('.lip-step')], bars = [...document.querySelectorAll('.lip-bar b')];
+  const steps = [...document.querySelectorAll('.lip-step')];
   function lipFrame(){
     if(reduce){ if(lastDrawn !== N-1){ loadAll(); const im=frames[N-1]; im.complete ? draw(N-1) : im.onload=()=>draw(N-1); } return; }
     const p = progress(lipSec);
@@ -267,7 +259,6 @@
     if(i !== lastDrawn) draw(i);
     const k = p < .33 ? 0 : p < .66 ? 1 : 2;
     steps.forEach((el,j)=>el.classList.toggle('on', j===k));
-    bars.forEach((b,j)=>b.style.setProperty('--f', clamp(p*3 - j, 0, 1).toFixed(3)));
   }
   function frame(){
     nav.classList.toggle('scrolled', scrollY > 8);

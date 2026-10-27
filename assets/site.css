@@ -305,3 +305,16 @@ h1,h2,h3{font-family:var(--display); font-weight:400; letter-spacing:-.005em; li
   .hero-aside{justify-items:start; text-align:left; padding-bottom:0}
   .hero-intro{grid-template-columns:1fr; padding-top:30px; margin-top:28px}
 }
+
+/* v2: how it works, a lighter sheet on the paper, numbered because it is a real sequence */
+.lip-sec{height:220vh; background:#f1e8e1}
+.lip-copy{gap:18px; width:min(36vw, 440px)}
+@media (max-width:860px){.lip-copy{width:100%}}
+.lip-count{font:italic 400 16px/1 var(--body); color:var(--brass)}
+.lip-count span{font-variant-numeric:lining-nums}
+ol.lip-steps{list-style:none; margin:0; padding:0; counter-reset:step; min-height:220px}
+.lip-step{counter-increment:step; top:0}
+.lip-step h2{font:400 clamp(32px,3.4vw,50px)/1.08 var(--display); color:#3a2626}
+.lip-step h2::before{content:counter(step) ". "; color:#a56b70}
+.lip-step p{color:#6e5856; font-size:17px; margin-top:14px}
+@media (prefers-reduced-motion: reduce){.lip-count{display:none} ol.lip-steps{min-height:0}}
