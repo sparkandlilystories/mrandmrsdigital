@@ -150,6 +150,24 @@ body{margin:0; font-size:16px}
 .partner{display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; align-items:center; margin-top:32px; padding:24px 0; border-bottom:1px solid var(--brass)}
 .partner ul{list-style:none; margin:0; padding:0; display:flex; gap:10px 28px; flex-wrap:wrap; font-size:15px}
 .partner li::before{content:"·"; color:var(--brass); margin-right:10px}
+
+/* three looks the finished mini site cycles through, one per 5-second clip */
+.screen{background:var(--sbg,#f7efeb); transition:background .6s ease}
+.screen .mini{transition:color .6s ease}
+.screen[data-look]{--sbg:var(--lk-bg); --bg:var(--lk-bg); --ink:var(--lk-ink); --muted:var(--lk-muted); --rose:var(--lk-accent); --brass:var(--lk-accent); --line:var(--lk-line); --rose-soft:var(--lk-bg)}
+.screen[data-look="glow"]{--lk-bg:#edf2f7; --lk-ink:#28344a; --lk-muted:#5f6b80; --lk-accent:#9b84d6; --lk-line:#cfd8e4}
+.screen[data-look="noir"]{--lk-bg:#0f1315; --lk-ink:#ece5da; --lk-muted:#9c958a; --lk-accent:#b8865b; --lk-line:#2a3134}
+.screen[data-look="chrome"]{--lk-bg:#08080c; --lk-ink:#f3f3f7; --lk-muted:#a5a5b4; --lk-accent:#e0479e; --lk-line:#26262f}
+.screen[data-look="glow"] .m-hero h3,.screen[data-look="glow"] .m-nav b{font-family:"Avenir Next","Helvetica Neue",system-ui,sans-serif; font-weight:300; letter-spacing:-.02em}
+.screen[data-look="noir"] .m-hero h3{font-family:var(--display); font-style:italic}
+.screen[data-look="chrome"] .m-hero h3,.screen[data-look="chrome"] .m-nav b{font-family:system-ui,"Helvetica Neue",Arial,sans-serif; font-weight:800; letter-spacing:-.04em; text-transform:uppercase}
+.screen[data-look] .m-hero .t.r{font-style:inherit}
+.screen[data-look] .m-media{outline-color:transparent}
+.screen[data-look] .chip{opacity:0; transition:opacity .3s}
+.browser{background:var(--surface)}
+.browser .bar{background:var(--rose-soft)}
+.browser .bar i{background:var(--line)}
+.browser .bar span{background:var(--surface); color:var(--muted)}
 </style>
 </head>
 <body>
@@ -215,16 +233,16 @@ body{margin:0; font-size:16px}
                 <i style="left:6.25%;top:48%;width:87.5%;height:48%"></i>
               </div>
               <div class="mini" aria-hidden="true">
-                <div class="m-nav"><b>Your&nbsp;Brand<sup>®</sup></b><span>Shop</span><span>Story</span><span>Journal</span><em>Order now</em></div>
+                <div class="m-nav"><b id="miniBrand">Your&nbsp;Brand<sup>®</sup></b><span>Shop</span><span>Story</span><span>Journal</span><em>Order now</em></div>
                 <div class="m-hero">
                   <h3 id="typeLine"><span class="t" data-text="Beautiful things,"></span><br><span class="t r" data-text="beautifully shown."></span></h3>
                   <div class="m-side"><p>Hand-finished pieces, photographed in light that does them justice.</p><div><em>Shop the collection</em><u>Our story</u></div></div>
                 </div>
-                <div class="m-media"><video id="buildVideo" muted loop playsinline preload="none" poster="assets/hero-welcome.jpg"><source src="assets/hero-welcome.mp4" type="video/mp4"></video><span class="wipe"></span></div>
+                <div class="m-media"><video id="buildVideo" muted playsinline preload="none" poster="assets/web/trend-iridescent.jpg" src="assets/web/trend-iridescent.mp4"></video><span class="wipe"></span></div>
               </div>
               <div class="chips" aria-hidden="true">
-                <span class="chip c1"><i style="background:#f5efe6"></i><i style="background:#9c6468"></i><i style="background:#a3855a"></i><i style="background:#2b2420"></i></span>
-                <span class="chip c2"><b>Aa</b> Cormorant</span>
+                <span class="chip c1"><i style="background:#eee1dc"></i><i style="background:#a56b70"></i><i style="background:#9a7b4f"></i><i style="background:#3a2626"></i></span>
+                <span class="chip c2"><b>Aa</b> Caslon</span>
                 <span class="chip c3">Mobile ready ✓</span>
               </div>
               <span class="cursor" aria-hidden="true"></span>
@@ -349,6 +367,13 @@ body{margin:0; font-size:16px}
   const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)), seg=(p,a,b)=>clamp((p-a)/(b-a));
   const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
   let playing=false;
+  const clips=[['glow','Glow','assets/web/trend-iridescent'],['noir','Noir','assets/web/trend-noir-orbit'],['chrome','Chrome','assets/web/trend-chrome-splash']];
+  const brand=document.getElementById('miniBrand'), brandDefault=brand.innerHTML; let ci=0;
+  function look(on){
+    if(on){ screen.dataset.look=clips[ci][0]; brand.textContent=clips[ci][1]; }
+    else { delete screen.dataset.look; brand.innerHTML=brandDefault; }
+  }
+  vid.addEventListener('ended',()=>{ ci=(ci+1)%clips.length; vid.poster=clips[ci][2]+'.jpg'; vid.src=clips[ci][2]+'.mp4'; look(true); if(playing) vid.play().catch(()=>{}); });
   function typeTo(t){ // t 0..1 across both lines
     const total=lines.reduce((n,l)=>n+l.dataset.text.length,0); let n=Math.round(t*total);
     lines.forEach(l=>{const k=Math.min(n,l.dataset.text.length); l.textContent=l.dataset.text.slice(0,k); n-=k;});
@@ -366,10 +391,10 @@ body{margin:0; font-size:16px}
     const idx=p<.22?0:p<.42?1:p<.66?2:3; steps.forEach((li,i)=>li.classList.toggle('on',i<=idx));
     bar.style.width=(p*100)+'%';
     url.textContent=p<.88?'yourbrand.com':'mrandmrsdigital.com';
-    if(s4>.02 && !playing){ vid.preload='auto'; vid.play().catch(()=>{}); playing=true; }
-    if(s4<=.02 && playing){ vid.pause(); playing=false; }
+    if(s4>.02 && !playing){ vid.preload='auto'; look(true); vid.play().catch(()=>{}); playing=true; }
+    if(s4<=.02 && playing){ vid.pause(); playing=false; look(false); }
   }
-  if(reduce){ render(1); vid.removeAttribute('loop'); return; }
+  if(reduce){ render(1); vid.pause(); playing=false; look(true); return; }
   let ticking=false;
   function onScroll(){ if(ticking) return; ticking=true; requestAnimationFrame(()=>{ticking=false;
     const r=build.getBoundingClientRect(), total=r.height-innerHeight; render(clamp(-r.top/total));
