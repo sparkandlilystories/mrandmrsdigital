@@ -333,3 +333,22 @@ ol.lip-steps{list-style:none; margin:0; padding:0; counter-reset:step; min-heigh
 .stack-head h2{font:400 clamp(38px,5vw,66px)/1.04 var(--display)}
 .piece figcaption b{font:400 22px/1.1 var(--display)}
 .piece figcaption span{font:italic 400 14px/1.2 var(--body); letter-spacing:0; text-transform:none}
+
+/* v2: quiet lower sections */
+.sec-head{margin-bottom:36px}
+.svc .go{font:italic 400 16px/1 var(--body); letter-spacing:0; text-transform:none; color:var(--rose-deep)}
+.svc:hover .go{text-decoration:underline; text-underline-offset:4px}
+.svc h3{font:400 32px/1.1 var(--display)}
+.svc p{font-size:16px}
+.brands{gap:10px 26px}
+.brands span{border:0; padding:0; font:italic 400 19px/1 var(--body); color:var(--ink)}
+.reel figure figcaption{font:italic 400 16px/1.2 var(--body)}
+.meet .note{font:italic 400 16px/1.4 var(--body)}
+.meet .sign{font:italic 400 24px/1 var(--display); color:var(--rose-deep); margin-top:6px}
+.faq summary{font:400 22px/1.3 var(--display)}
+.faq summary::after{color:var(--rose); font:300 26px/1 var(--body)}
+.cta h2{font:400 clamp(44px,6.4vw,88px)/1.02 var(--display)}
+.cta .hand{font:italic 400 20px/1 var(--body); color:var(--brass)}
+footer{letter-spacing:0; font-size:14px}
+.reel-sticky{grid-template-columns:minmax(0,1fr)}
+.reel-sticky > .wrap{width:100%}

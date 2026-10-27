@@ -123,22 +123,21 @@
 
   <section class="sec" id="services">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">What we make</span>
+      <div class="sec-head">
         <h2>Pick what your shop needs next.</h2>
       </div>
       <div class="services">
-        <a class="svc reveal" href="photography">
+        <a class="svc" href="photography">
           <div class="m"><img src="assets/photography.jpg" alt="Portrait-style AI photography example" loading="lazy"></div>
-          <div class="t"><h3>Photography</h3><p>Lifestyle and campaign images that put your product in scenes a real shoot couldn’t afford.</p><span class="go">See photography →</span></div>
+          <div class="t"><h3>Photography</h3><p>Lifestyle and campaign images that put your product in scenes a real shoot couldn’t afford.</p><span class="go">See all photography</span></div>
         </a>
-        <a class="svc reveal" href="videos">
+        <a class="svc" href="videos">
           <div class="m"><video muted loop playsinline autoplay preload="metadata"><source src="assets/videos.mp4" type="video/mp4"></video></div>
-          <div class="t"><h3>Videos</h3><p>Advertising clips and UGC-style videos, cut for TikTok, Reels and product pages.</p><span class="go">See videos →</span></div>
+          <div class="t"><h3>Videos</h3><p>Advertising clips and UGC-style videos, cut for TikTok, Reels and product pages.</p><span class="go">See all videos</span></div>
         </a>
-        <a class="svc reveal" href="custom-packages">
+        <a class="svc" href="custom-packages">
           <div class="m"><img src="assets/packages.jpg" alt="A serum bottle, a white sneaker and a perfume on travertine plinths" loading="lazy"></div>
-          <div class="t"><h3>Custom Packages</h3><p>Full service bundles of photos and video, on a schedule we agree together.</p><span class="go">See packages →</span></div>
+          <div class="t"><h3>Custom Packages</h3><p>Full service bundles of photos and video, on a schedule we agree together.</p><span class="go">See the packages</span></div>
         </a>
       </div>
     </div>
@@ -147,7 +146,6 @@
   <section class="reel-sec" id="ugc" aria-label="UGC collaborations">
     <div class="reel-sticky">
       <div class="wrap" style="display:grid;gap:16px">
-        <span class="eyebrow">UGC collaborations</span>
         <h2 style="font-size:clamp(28px,4vw,50px);max-width:20ch">Real products, real reactions, one familiar face.</h2>
         <p style="color:var(--muted);max-width:56ch">Gifted UGC collaborations made with AI, from the brand’s own product, ready for TikTok and Instagram.</p>
         <div class="brands"><span>Ninja</span><span>Vax</span><span>Euhomy</span><span>ProDen</span><span>Free Soul</span></div>
@@ -167,17 +165,16 @@
 
   <section class="sec" id="meet">
     <div class="wrap meet">
-      <div class="pic reveal">
+      <div class="pic">
         <img src="assets/meet-us.jpg" alt="Mr and Mrs Digital, the husband-and-wife team behind the studio, as their AI avatars" loading="lazy">
         <p class="note">Yes, these are our AI twins. We made them ourselves, just like your visuals.</p>
       </div>
-      <div class="txt reveal">
-        <span class="eyebrow">Meet us</span>
+      <div class="txt">
         <h2>Hi, we’re Mr &amp; Mrs Digital.</h2>
         <p>A husband-and-wife studio based in Norwich, UK. We started making AI product visuals for our own projects, fell in love with it, and now we make them for brands like yours.</p>
         <p><strong>When you work with us, you talk to us directly.</strong> No account managers, no call centres, just two people who care about getting your product right.</p>
         <p>Our first clients are still with us, and that’s the bit we’re proudest of.</p>
-        <p class="hand">Mrs &amp; Mr Digital</p>
+        <p class="sign">Mrs &amp; Mr Digital</p>
       </div>
     </div>
   </section>
@@ -185,7 +182,6 @@
   <section class="sec" id="faq" style="padding-top:24px">
     <div class="wrap faq">
       <div class="sec-head" style="margin:0">
-        <span class="eyebrow">Good to know</span>
         <h2>Questions we hear a lot.</h2>
       </div>
       <dl>
@@ -202,11 +198,11 @@
 
   <section class="sec" style="padding-top:24px">
     <div class="wrap">
-      <div class="cta reveal">
+      <div class="cta">
         <span class="hand">With care, from Norwich</span>
-        <h2>Let’s create <em style="color:var(--brass)">together.</em></h2>
-        <p>Ready for unforgettable visuals? Tell us about your product and we’ll reply in writing with ideas and a clear quote.</p>
-        <a class="btn" href="contact-us">Get a Quote</a>
+        <h2>Let’s create together.</h2>
+        <p>Tell us about your product and what you need. We’ll reply in writing with ideas and a clear quote.</p>
+        <a class="btn" href="contact-us">Get a quote</a>
       </div>
     </div>
   </section>
@@ -275,12 +271,6 @@
   addEventListener('resize', req);
   frame();
 
-  // gentle fade-up for sections, starting from a visible state if observers are unavailable
-  if(!reduce && 'IntersectionObserver' in window){
-    const els = [...document.querySelectorAll('.reveal')];
-    const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.remove('pre'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -8% 0px'});
-    els.forEach(el => { const r = el.getBoundingClientRect(); if(r.top > innerHeight){ el.classList.add('pre'); io.observe(el); } });
-  }
 })();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
