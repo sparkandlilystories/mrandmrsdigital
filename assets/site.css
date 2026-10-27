@@ -318,3 +318,18 @@ ol.lip-steps{list-style:none; margin:0; padding:0; counter-reset:step; min-heigh
 .lip-step h2::before{content:counter(step) ". "; color:#a56b70}
 .lip-step p{color:#6e5856; font-size:17px; margin-top:14px}
 @media (prefers-reduced-motion: reduce){.lip-count{display:none} ol.lip-steps{min-height:0}}
+
+/* v2: portfolio, one continuous lighter sheet after how it works */
+.g3d-sec{height:440vh; background:#f1e8e1; color:#3a2626}
+.g3d-head h2{font:400 clamp(40px,5.4vw,76px)/1.04 var(--display); color:#3a2626}
+.g3d-head p{color:#6e5856}
+.g3d-cap b{font:400 clamp(30px,3.4vw,48px)/1 var(--display); color:#3a2626}
+.g3d-cap span{font:italic 400 17px/1.2 var(--body); letter-spacing:0; text-transform:none; color:#9a7b4f}
+.g3d-foot{color:#6e5856}
+.g3d-count{font:italic 400 15px/1 var(--body); letter-spacing:0; min-width:4.5em}
+.g3d-bar{background:#dccbc4}
+.g3d-bar i{background:#a56b70}
+.stack-sec{background:#f1e8e1}
+.stack-head h2{font:400 clamp(38px,5vw,66px)/1.04 var(--display)}
+.piece figcaption b{font:400 22px/1.1 var(--display)}
+.piece figcaption span{font:italic 400 14px/1.2 var(--body); letter-spacing:0; text-transform:none}

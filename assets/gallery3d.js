@@ -20,7 +20,7 @@
     {src:'assets/photo/white-perfume-blossom.jpg', title:'Blossom', sub:'Fragrance'},
     {src:'assets/photo/lipstick-crew.jpg', title:'Lights, camera, lipstick', sub:'Beauty'}
   ];
-  const CREAM = 0xf1e9df, GAP = 6.5;
+  const CREAM = 0xf1e8e1, GAP = 6.5;
   const canvas = sec.querySelector('canvas');
   const cap = sec.querySelector('.g3d-cap'), capT = cap.querySelector('b'), capS = cap.querySelector('span');
   const head = sec.querySelector('.g3d-head'), bar = sec.querySelector('.g3d-bar i'), count = sec.querySelector('.g3d-count');
@@ -40,8 +40,8 @@
     const side = i % 2 === 0 ? -1 : 1;
     g.userData = {side, baseY: (i % 3 - 1) * 0.35, rot: -side * 0.18};
     g.position.z = -i * GAP;
-    const mat = new T.Mesh(new T.PlaneGeometry(1,1), new T.MeshBasicMaterial({color:0xfbf7f0, transparent:true}));
-    const shadow = new T.Mesh(new T.PlaneGeometry(1,1), new T.MeshBasicMaterial({color:0x2b2420, transparent:true, opacity:.12}));
+    const mat = new T.Mesh(new T.PlaneGeometry(1,1), new T.MeshBasicMaterial({color:0xf7efeb, transparent:true}));
+    const shadow = new T.Mesh(new T.PlaneGeometry(1,1), new T.MeshBasicMaterial({color:0x3a2626, transparent:true, opacity:.12}));
     const pic = new T.Mesh(new T.PlaneGeometry(1,1), new T.MeshBasicMaterial({color:0xffffff, transparent:true}));
     shadow.position.set(0.06,-0.09,-0.02); mat.position.z = -0.01;
     g.add(shadow); g.add(mat); g.add(pic);
@@ -62,7 +62,7 @@
   }
 
   // gold dust
-  const N = narrow() ? 500 : 1100, pos = new Float32Array(N*3), speed = new Float32Array(N);
+  const N = narrow() ? 260 : 600, pos = new Float32Array(N*3), speed = new Float32Array(N);
   const zMin = -(items.length) * GAP - 6;
   for(let i=0;i<N;i++){ pos[i*3]=(Math.random()-.5)*14; pos[i*3+1]=(Math.random()-.5)*8; pos[i*3+2]=zMin+Math.random()*(12-zMin); speed[i]=.002+Math.random()*.006; }
   const dg = new T.BufferGeometry(); dg.setAttribute('position', new T.BufferAttribute(pos,3));
@@ -111,7 +111,7 @@
       for(let i=0;i<N;i++){ pos[i*3+1] += speed[i]; if(pos[i*3+1] > 4) pos[i*3+1] = -4; }
       dg.attributes.position.needsUpdate = true;
       renderer.render(scene, camera);
-      if(idx !== last){ last = idx; cap.classList.remove('on'); setTimeout(()=>{ capT.textContent = items[idx].title; capS.textContent = items[idx].sub; cap.classList.toggle('right', groups[idx].userData.side < 0 && !narrow()); cap.classList.add('on'); }, 180); count.textContent = String(idx+1).padStart(2,'0') + ' / ' + String(items.length).padStart(2,'0'); }
+      if(idx !== last){ last = idx; cap.classList.remove('on'); setTimeout(()=>{ capT.textContent = items[idx].title; capS.textContent = items[idx].sub; cap.classList.toggle('right', groups[idx].userData.side < 0 && !narrow()); cap.classList.add('on'); }, 180); count.textContent = (idx+1) + ' of ' + items.length; }
       head.style.opacity = clamp(1 - p * 7, 0, 1).toFixed(3);
       bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
       raf = requestAnimationFrame(step);
