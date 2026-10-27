@@ -352,3 +352,6 @@ ol.lip-steps{list-style:none; margin:0; padding:0; counter-reset:step; min-heigh
 footer{letter-spacing:0; font-size:14px}
 .reel-sticky{grid-template-columns:minmax(0,1fr)}
 .reel-sticky > .wrap{width:100%}
+
+/* v2: section labels become a quiet italic line, never tracked capitals */
+.eyebrow{font:italic 400 17px/1.3 var(--body); letter-spacing:0; text-transform:none; color:var(--brass)}

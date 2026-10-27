@@ -42,11 +42,11 @@ body{margin:0; font-size:16px}
 .bar-track i{position:absolute; left:0; top:-1px; height:3px; width:0; background:var(--rose)}
 .device{perspective:1600px}
 .device .browser{transform:rotateX(calc(var(--tilt,1) * 10deg)) rotateY(calc(var(--tilt,1) * -12deg)) scale(calc(.94 + (1 - var(--tilt,1)) * .06)); transform-origin:60% 50%; transition:transform .2s linear; box-shadow:0 60px 120px -60px rgba(43,36,32,.6)}
-.browser{background:#fbf7f0; border:1px solid var(--line); max-width:100%}
-.browser .bar{display:flex; align-items:center; gap:8px; padding:12px 14px; border-bottom:1px solid var(--line); background:#f3ece1}
-.browser .bar i{width:9px; height:9px; border-radius:50%; background:#ddd1c2}
-.browser .bar span{margin-left:12px; flex:1; max-width:340px; background:#fbf7f0; color:#73685f; font:400 12px/1 var(--body); padding:7px 12px; letter-spacing:.02em; overflow:hidden; white-space:nowrap; text-overflow:ellipsis}
-.screen{position:relative; aspect-ratio:16/10; container-type:inline-size; overflow:hidden; background:#fbf7f0}
+.browser{background:#f7efeb; border:1px solid var(--line); max-width:100%}
+.browser .bar{display:flex; align-items:center; gap:8px; padding:12px 14px; border-bottom:1px solid var(--line); background:#f3e9e4}
+.browser .bar i{width:9px; height:9px; border-radius:50%; background:#d9c4be}
+.browser .bar span{margin-left:12px; flex:1; max-width:340px; background:#f7efeb; color:#6e5856; font:400 12px/1 var(--body); padding:7px 12px; letter-spacing:.02em; overflow:hidden; white-space:nowrap; text-overflow:ellipsis}
+.screen{position:relative; aspect-ratio:16/10; container-type:inline-size; overflow:hidden; background:#f7efeb}
 .wire{position:absolute; inset:0; width:100%; height:100%}
 .wire .grid path{stroke:var(--line); stroke-width:.15; fill:none; opacity:calc(1 - var(--s3,0))}
 .wire .lines path{stroke:var(--brass); stroke-width:.35; fill:none; stroke-dasharray:200; stroke-dashoffset:calc(200 - var(--s1,0) * 200); opacity:calc(1 - var(--s3,0))}
@@ -92,7 +92,7 @@ body{margin:0; font-size:16px}
 .pages-head p{font:italic 500 clamp(22px,2.4vw,30px)/1.3 var(--display); max-width:30ch; margin:0}
 .pages-head p em{color:var(--rose)}
 .deck{display:grid; grid-template-columns:1fr 1.35fr 1fr; padding-block:24px; gap:clamp(12px,2vw,28px); align-items:center; perspective:1400px}
-.card3d{position:relative; display:block; transform-style:preserve-3d; transform:rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg)) translateZ(var(--tz,0px)); transition:transform .25s ease-out, box-shadow .4s; box-shadow:0 40px 80px -50px rgba(43,36,32,.55); background:#fbf7f0; border:1px solid var(--line)}
+.card3d{position:relative; display:block; transform-style:preserve-3d; transform:rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg)) translateZ(var(--tz,0px)); transition:transform .25s ease-out, box-shadow .4s; box-shadow:0 40px 80px -50px rgba(43,36,32,.55); background:#f7efeb; border:1px solid var(--line)}
 .card3d img{display:block; width:100%; height:auto}
 .card3d span{position:absolute; left:14px; bottom:14px; background:rgba(43,36,32,.6); color:#fff; font:italic 500 16px/1 var(--display); padding:9px 14px; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px)}
 .card3d:hover{box-shadow:0 60px 110px -50px rgba(43,36,32,.7)}
@@ -126,15 +126,15 @@ body{margin:0; font-size:16px}
 .plan{padding:32px 28px 30px; display:grid; gap:14px; align-content:start; position:relative}
 .plan + .plan{border-left:1px solid var(--line)}
 .plan.feature{background:var(--surface); outline:1px solid var(--brass); outline-offset:-1px; z-index:1}
-.plan .tag{position:absolute; top:-1px; right:24px; background:var(--green); color:var(--on-green); font:500 10px/1 var(--body); letter-spacing:.22em; text-transform:uppercase; padding:8px 10px}
+.plan .tag{position:absolute; top:-1px; right:24px; background:var(--green); color:var(--on-green); font:500 10px/1 var(--body); letter-spacing:0; text-transform:none; padding:8px 10px}
 .plan .name{font:500 32px/1 var(--display)}
-.plan .sys{font:500 11px/1 var(--body); letter-spacing:.26em; text-transform:uppercase; color:var(--brass); margin-top:-4px}
+.plan .sys{font:500 11px/1 var(--body); letter-spacing:0; text-transform:none; color:var(--brass); margin-top:-4px}
 .plan .combo{font:italic 500 19px/1.3 var(--display)}
 .plan ul{list-style:none; margin:0; padding:0; border-top:1px solid var(--line)}
 .plan li{padding:10px 0; border-bottom:1px solid var(--line); font-size:15px}
 .fees{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:6px}
 .fees div{display:grid; gap:6px}
-.fees span{font:500 10px/1 var(--body); letter-spacing:.22em; text-transform:uppercase; color:var(--muted)}
+.fees span{font:500 10px/1 var(--body); letter-spacing:0; text-transform:none; color:var(--muted)}
 .fees b{font:500 34px/1 var(--display); font-weight:500}
 .fees b small{font:300 13px/1 var(--body); color:var(--muted)}
 .fees b i{font-size:.5em; color:var(--muted); margin-right:4px}
@@ -160,7 +160,7 @@ body{margin:0; font-size:16px}
 .screen[data-look="chrome"]{--lk-bg:#08080c; --lk-ink:#f3f3f7; --lk-muted:#a5a5b4; --lk-accent:#e0479e; --lk-line:#26262f}
 .screen[data-look="glow"] .m-hero h3,.screen[data-look="glow"] .m-nav b{font-family:"Avenir Next","Helvetica Neue",system-ui,sans-serif; font-weight:300; letter-spacing:-.02em}
 .screen[data-look="noir"] .m-hero h3{font-family:var(--display); font-style:italic}
-.screen[data-look="chrome"] .m-hero h3,.screen[data-look="chrome"] .m-nav b{font-family:system-ui,"Helvetica Neue",Arial,sans-serif; font-weight:800; letter-spacing:-.04em; text-transform:uppercase}
+.screen[data-look="chrome"] .m-hero h3,.screen[data-look="chrome"] .m-nav b{font-family:system-ui,"Helvetica Neue",Arial,sans-serif; font-weight:800; letter-spacing:-.04em; text-transform:none}
 .screen[data-look] .m-hero .t.r{font-style:inherit}
 .screen[data-look] .m-media{outline-color:transparent}
 .screen[data-look] .chip{opacity:0; transition:opacity .3s}
@@ -180,16 +180,15 @@ body{margin:0; font-size:16px}
       <li><a href="photography">Photography</a></li>
       <li><a href="videos">Videos</a></li>
       <li><a href="custom-packages">Packages</a></li>
-      <li><a href="price-list">Price List</a></li>
+      <li><a href="price-list">Price list</a></li>
     </ul>
-    <a class="btn" href="contact-us">Get a Quote</a>
+    <a class="btn" href="contact-us">Get a quote</a>
   </div>
 </header>
 
 <main>
   <section class="wrap wd-hero">
-    <span class="eyebrow">Webdesign</span>
-    <h1>Websites as beautiful <em>as your products.</em></h1>
+    <h1>Websites as beautiful as your products.</h1>
     <p>We design and build modern websites tailored to your brand, then fill them with product visuals from our own studio. They look the part and they do their job: bring you customers.</p>
     <p class="ideal">Ideal for businesses, product sellers, creatives and startups who want a professional online presence.</p>
   </section>
@@ -199,12 +198,12 @@ body{margin:0; font-size:16px}
       <div class="wrap build-grid">
         <div class="build-copy">
           <span class="eyebrow">Watch it come together</span>
-          <h2>From a blank page <em>to your brand.</em></h2>
+          <h2>From a blank page to your brand.</h2>
           <ol class="steps" aria-hidden="true">
-            <li class="on"><b>01</b><span>Sketch<small>We plan every page around what you sell.</small></span></li>
-            <li><b>02</b><span>Structure<small>A clear layout that leads people to buy.</small></span></li>
-            <li><b>03</b><span>Style<small>Your fonts, your colours, your voice.</small></span></li>
-            <li><b>04</b><span>Live<small>Filled with visuals from our own studio.</small></span></li>
+            <li class="on"><b>1</b><span>Sketch<small>We plan every page around what you sell.</small></span></li>
+            <li><b>2</b><span>Structure<small>A clear layout that leads people to buy.</small></span></li>
+            <li><b>3</b><span>Style<small>Your fonts, your colours, your voice.</small></span></li>
+            <li><b>4</b><span>Live<small>Filled with visuals from our own studio.</small></span></li>
           </ol>
           <div class="bar-track" aria-hidden="true"><i id="buildBar"></i></div>
         </div>
@@ -268,7 +267,7 @@ body{margin:0; font-size:16px}
   <div class="wrap">
     <section class="block">
       <div class="block-head">
-        <div style="display:grid;gap:12px"><span class="eyebrow">Three ways to work with us</span><h2>A website, the whole system, <em>or a showpiece.</em></h2></div>
+        <div style="display:grid;gap:12px"><h2>A website, the whole system, or a showpiece.</h2></div>
         <p>Choose a one-off website with monthly care, let us build your site and keep filling it with fresh content, or go all in with an immersive 3D site.</p>
       </div>
       <div class="two">
@@ -287,7 +286,7 @@ body{margin:0; font-size:16px}
           <a class="btn" href="#systems" style="justify-self:start">See the systems</a>
         </div>
         <div class="dark">
-          <span class="eyebrow">New · Immersive websites</span>
+          <span class="eyebrow">New: immersive websites</span>
           <h3>A 3D site people remember</h3>
           <p>One scene of light that changes as you scroll, shaped around your product. For launches and flagship collections.</p>
           <div class="from" style="font-size:30px">Price on request</div>
@@ -298,7 +297,7 @@ body{margin:0; font-size:16px}
 
     <section class="block" id="systems">
       <div class="block-head">
-        <div style="display:grid;gap:12px"><span class="eyebrow">Choose your complete system</span><h2>Complete Brand <em>Growth Systems.</em></h2></div>
+        <div style="display:grid;gap:12px"><h2>Complete Brand Growth Systems.</h2></div>
         <p>Your website plus a monthly flow of visuals and website care, for a little less than booking them separately. Shopify fees are paid by you directly.</p>
       </div>
       <div class="plans">
@@ -345,9 +344,9 @@ body{margin:0; font-size:16px}
     <div class="wrap">
       <div class="cta">
         <span class="hand">With care, from Norwich</span>
-        <h2>Let’s build <em style="color:var(--brass)">yours.</em></h2>
+        <h2>Let’s build yours.</h2>
         <p>Tell us about your business and what you sell. We’ll reply in writing with ideas and a clear quote.</p>
-        <a class="btn" href="contact-us">Get a Quote</a>
+        <a class="btn" href="contact-us">Get a quote</a>
       </div>
     </div>
   </section>
