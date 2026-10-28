@@ -168,6 +168,27 @@ body{margin:0; font-size:16px}
 .browser .bar{background:var(--rose-soft)}
 .browser .bar i{background:var(--line)}
 .browser .bar span{background:var(--surface); color:var(--muted)}
+
+/* Mobile: the build scene becomes plain steps and three big looks */
+.wd-mobile{display:none}
+@media (max-width:760px){
+  .build{display:none}
+  .wd-mobile{display:grid; gap:18px; padding-block:24px 56px}
+  .wd-mobile h2{font-size:clamp(30px,8vw,40px)}
+  .m-steps{list-style:none; margin:6px 0 0; padding:0; counter-reset:none}
+  .m-steps li{display:flex; gap:16px; align-items:baseline; padding:14px 0; border-top:1px solid var(--line)}
+  .m-steps li:last-child{border-bottom:1px solid var(--line)}
+  .m-steps b{font:400 12px/1 var(--body); letter-spacing:.2em; color:var(--brass); min-width:2.4ch}
+  .m-steps h3{font:400 24px/1.1 var(--display)}
+  .m-steps p{font:400 15px/1.5 var(--body); color:var(--muted); margin-top:4px}
+  .looks{display:grid; gap:28px; margin-top:22px}
+  .looks figure{margin:0}
+  .looks video{display:block; width:100%; aspect-ratio:4/5; object-fit:cover; background:var(--rose-soft); outline:1px solid var(--line); outline-offset:6px}
+  .looks figcaption{margin-top:14px; font:italic 400 16px/1.3 var(--body); color:var(--muted)}
+  .looks figcaption b{font:400 22px/1 var(--display); font-style:normal; color:var(--ink); margin-right:8px}
+  .looks-cta{display:grid; gap:16px; justify-items:start; margin-top:18px; padding-top:22px; border-top:1px solid var(--brass)}
+  .looks-cta p{font:italic 400 22px/1.3 var(--display); color:var(--ink); max-width:24ch}
+}
 </style>
 </head>
 <body>
@@ -249,6 +270,26 @@ body{margin:0; font-size:16px}
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="wrap wd-mobile" aria-label="How a website comes together, and three looks we have built">
+    <span class="eyebrow">Watch it come together</span>
+    <h2>From a blank page to your brand.</h2>
+    <ol class="m-steps">
+      <li><b>01</b><div><h3>Sketch</h3><p>We plan every page around what you sell.</p></div></li>
+      <li><b>02</b><div><h3>Structure</h3><p>A clear layout that leads people to buy.</p></div></li>
+      <li><b>03</b><div><h3>Style</h3><p>Your fonts, your colours, your voice.</p></div></li>
+      <li><b>04</b><div><h3>Live</h3><p>Filled with visuals from our own studio.</p></div></li>
+    </ol>
+    <div class="looks">
+      <figure><video muted loop playsinline preload="none" poster="assets/web/trend-iridescent.jpg" data-src="assets/web/trend-iridescent.mp4" aria-label="An iridescent glass jellyfish floating over a pastel shore"></video><figcaption><b>Glow</b> soft, dreamy, pastel</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="assets/web/trend-noir-orbit.jpg" data-src="assets/web/trend-noir-orbit.mp4" aria-label="A dark, moody product orbit in low light"></video><figcaption><b>Noir</b> dark, moody, luxurious</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="assets/web/trend-chrome-splash.jpg" data-src="assets/web/trend-chrome-splash.mp4" aria-label="A liquid chrome splash"></video><figcaption><b>Chrome</b> bold, glossy, modern</figcaption></figure>
+    </div>
+    <div class="looks-cta">
+      <p>Every look can be yours, made for your products.</p>
+      <a class="btn" href="contact-us">Get a quote</a>
     </div>
   </section>
 
@@ -413,6 +454,16 @@ body{margin:0; font-size:16px}
   deckEl.addEventListener('pointermove',e=>{const r=deckEl.getBoundingClientRect(); px=(e.clientX-r.left)/r.width*2-1; py=(e.clientY-r.top)/r.height*2-1; deck();});
   deckEl.addEventListener('pointerleave',()=>{px=py=0; deck();});
   addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll); onScroll();
+})();
+</script>
+<script>
+(function(){
+  const vids=[...document.querySelectorAll('.looks video')]; if(!vids.length) return;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;
+    if(e.isIntersecting){ if(!v.src){v.src=v.dataset.src;} if(!reduce) v.play().catch(()=>{}); }
+    else if(!v.paused) v.pause(); }),{threshold:.35});
+  vids.forEach(v=>io.observe(v));
 })();
 </script>
 <script src="assets/menu.js" defer></script>
