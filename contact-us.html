@@ -118,7 +118,7 @@ body{margin:0; font-size:16px}
 (function(){
   const nav=document.getElementById('nav'); addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>8),{passive:true});
   // Set this to the form service address (e.g. a Formspree endpoint) when the site moves to its own hosting.
-  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/innovabizpro@gmail.com';
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/b905f2c8d492a9a121a182e59130e648';
   const form=document.getElementById('quote'), err=document.getElementById('err'), status=document.getElementById('status'), btn=document.getElementById('sendBtn');
   form.addEventListener('submit', async e=>{
     e.preventDefault(); err.textContent=''; status.hidden=true;
