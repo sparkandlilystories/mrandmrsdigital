@@ -377,3 +377,12 @@ footer{letter-spacing:0; font-size:14px}
 .menu-foot{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-block:20px 28px; width:100%; box-sizing:border-box}
 .menu-foot span{font:italic 400 15px/1.4 var(--body); color:var(--muted)}
 @media (prefers-reduced-motion: reduce){.menu-sheet{transition:none}}
+
+/* ---- homepage: wide Webdesign card leads the services ---- */
+.svc-wide{grid-column:1 / -1; grid-template-columns:1.35fr 1fr; grid-template-rows:auto}
+.svc-wide .m{aspect-ratio:16/10}
+.svc-wide .t{align-content:center; padding:32px clamp(24px,3.4vw,48px); gap:12px}
+.svc-wide h3{font-size:clamp(30px,3.2vw,44px)}
+.svc-wide p{font-size:16px; max-width:38ch}
+.svc .new{font:italic 400 15px/1 var(--display); color:var(--brass); letter-spacing:.02em}
+@media (max-width:860px){.svc-wide{grid-template-columns:1fr}.svc-wide .m{aspect-ratio:4/3}.svc-wide .t{padding:20px 0 0; gap:8px}.svc-wide h3{font-size:32px}.svc-wide p{font-size:16px}}
