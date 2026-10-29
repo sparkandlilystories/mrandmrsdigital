@@ -53,6 +53,7 @@ body{margin:0; font-size:16px}
 .status{font:italic 500 19px/1.4 var(--display); padding:16px 18px; border:1px solid var(--line); background:var(--bg)}
 .status.ok{border-color:var(--brass)}
 .status.err{border-color:var(--rose); color:var(--rose)}
+.status .fallback{display:inline-flex; margin-top:14px; font-style:normal}
 .err-msg{color:var(--rose); font-size:13px; min-height:1em}
 @media (max-width:860px){.ct{grid-template-columns:1fr}.ct-side{position:static}}
 </style>
@@ -141,8 +142,18 @@ body{margin:0; font-size:16px}
       form.reset(); status.className='status ok'; status.hidden=false;
       status.textContent='Thank you, '+name.split(' ')[0]+'. Your message is with us, and we’ll reply in writing.';
     }catch(_){
+      // Fallback: if the form service is down, offer a ready-written email so no enquiry is lost.
+      // The address is assembled here so it never appears as plain text in the page source.
+      const to=['innovabizpro','gmail.com'].join('@');
+      const body='Name: '+name+'\nEmail: '+email+(payload.company?'\nCompany: '+payload.company:'')+(payload.needs?'\nWhat I need: '+payload.needs:'')+'\n\n'+msg;
+      const link=document.createElement('a');
+      link.className='btn fallback';
+      link.href='mailto:'+to+'?subject='+encodeURIComponent(payload._subject)+'&body='+encodeURIComponent(body);
+      link.textContent='Email us';
       status.className='status err'; status.hidden=false;
-      status.textContent='Your message couldn’t be sent just now. Please try again in a minute.';
+      status.textContent='Your message couldn’t be sent just now. You can email us directly instead — your message is already written for you.';
+      status.appendChild(document.createElement('br'));
+      status.appendChild(link);
     }finally{ btn.disabled=false; btn.textContent='Send message'; }
   });
 })();
