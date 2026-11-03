@@ -124,3 +124,13 @@
 .j-strip .head{display:flex; justify-content:space-between; align-items:end; gap:20px; flex-wrap:wrap; margin-bottom:32px}
 .j-strip h2{font-size:clamp(32px,4.4vw,54px)}
 .j-strip .j-grid{padding-block:0}
+
+/* side-by-side image pair inside an article */
+.pair{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:1.8em 0 0!important}
+.pair figure{margin:0; display:grid; gap:10px}
+.pair .m{aspect-ratio:16/9; overflow:hidden; background:var(--rose-soft); outline:1px solid var(--line); outline-offset:6px}
+.pair img{width:100%; height:100%; object-fit:cover}
+.pair figcaption{font-size:14px; color:var(--muted); line-height:1.45}
+.pair figcaption b{display:block; font:600 11px/1.5 var(--body); letter-spacing:.14em; text-transform:uppercase; color:var(--rose-deep)}
+.pair-note{font-size:14px; color:var(--muted); margin-top:14px!important}
+@media (max-width:560px){.pair{grid-template-columns:1fr}}
