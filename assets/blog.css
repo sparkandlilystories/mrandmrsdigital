@@ -1,0 +1,126 @@
+/* Journal: the studio's letters, set like a well-made magazine page on the same powder-rose paper.
+   Reuses site.css tokens (colours, Caslon, .btn, .faq, .cta, nav, footer). */
+
+/* ---------- shared ---------- */
+.j-eyebrow{font:600 12px/1 var(--body); letter-spacing:.14em; text-transform:uppercase; color:var(--rose-deep); text-decoration:none}
+.j-meta{display:flex; flex-wrap:wrap; gap:6px 14px; color:var(--muted); font-size:14px}
+.j-meta span + span::before{content:"·"; margin-right:14px; color:var(--brass)}
+
+/* ---------- journal index ---------- */
+.j-hero{padding-block:56px 40px; display:grid; grid-template-columns:1.3fr 1fr; gap:32px; align-items:end; border-bottom:1px solid var(--line)}
+.j-hero h1{font-size:clamp(52px,8vw,112px)}
+.j-hero p{color:var(--muted); max-width:44ch; font-size:17px}
+@media (max-width:760px){.j-hero{grid-template-columns:1fr; gap:16px; padding-block:40px 28px}}
+
+.j-feature{display:grid; grid-template-columns:1.25fr 1fr; gap:40px; align-items:center; padding-block:48px; border-bottom:1px solid var(--line); text-decoration:none}
+.j-feature .m{aspect-ratio:16/9; overflow:hidden; background:var(--rose-soft); outline:1px solid var(--line); outline-offset:10px}
+.j-feature .m img{width:100%; height:100%; object-fit:cover; transition:transform .8s}
+.j-feature:hover .m img{transform:scale(1.03)}
+.j-feature .t{display:grid; gap:16px; align-content:center}
+.j-feature h2{font-size:clamp(32px,3.6vw,48px)}
+.j-feature p{color:var(--muted); max-width:46ch}
+.j-feature .go{font:600 14px/1 var(--body); color:var(--rose-deep)}
+@media (max-width:860px){.j-feature{grid-template-columns:1fr; gap:24px; padding-block:32px}}
+
+.j-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:40px 28px; padding-block:48px 24px}
+.j-card{display:grid; gap:14px; align-content:start; text-decoration:none}
+.j-card .m{aspect-ratio:16/9; overflow:hidden; background:var(--rose-soft)}
+.j-card .m img{width:100%; height:100%; object-fit:cover; transition:transform .8s}
+.j-card:hover .m img{transform:scale(1.04)}
+.j-card h3{font-size:24px; line-height:1.15}
+.j-card:hover h3{color:var(--rose-deep)}
+.j-card p{color:var(--muted); font-size:15px}
+@media (max-width:860px){.j-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.j-grid{grid-template-columns:1fr}}
+.j-soon{padding:28px; border:1px dashed var(--line); color:var(--muted); display:grid; gap:10px; align-content:center}
+.j-soon b{font:400 22px/1.2 var(--display); color:var(--ink)}
+
+/* ---------- article ---------- */
+.a-head{max-width:820px; margin:0 auto; padding-block:40px 32px; display:grid; gap:18px}
+.crumbs{display:flex; gap:8px; font-size:13px; color:var(--muted)}
+.crumbs a{text-decoration:none; color:var(--muted)}
+.crumbs a:hover{color:var(--rose-deep)}
+.crumbs span{color:var(--brass)}
+.a-head h1{font-size:clamp(40px,5.6vw,72px); line-height:1.04}
+.a-head .dek{font:italic 400 clamp(19px,2vw,23px)/1.45 var(--display); color:var(--muted); max-width:56ch}
+
+.a-cover{margin:0 auto 8px; max-width:1100px}
+.a-cover .m{aspect-ratio:16/9; overflow:hidden; background:var(--rose-soft); outline:1px solid var(--line); outline-offset:12px}
+.a-cover img{width:100%; height:100%; object-fit:cover}
+.a-cover figcaption{margin-top:22px; font-size:13px; color:var(--muted); text-align:center}
+
+.prose{max-width:680px; margin:0 auto; padding-block:40px 24px; font-size:18px; line-height:1.7}
+.prose > * + *{margin-top:1.1em}
+.prose h2{font-size:clamp(30px,3.4vw,40px); line-height:1.12; margin-top:2.2em; scroll-margin-top:96px}
+.prose h3{font-size:24px; margin-top:1.8em}
+.prose a{color:var(--rose-deep); text-decoration-color:color-mix(in srgb, var(--rose) 50%, transparent); text-underline-offset:3px}
+.prose a:hover{text-decoration-color:var(--rose-deep)}
+.prose strong{font-weight:700}
+.prose ul,.prose ol{padding-left:1.2em}
+.prose li + li{margin-top:.45em}
+.prose li::marker{color:var(--brass)}
+.prose sup a{text-decoration:none; font-size:.7em; padding-left:1px}
+
+/* the 40–60 word answer under each question */
+.prose .answer{font-size:19px; line-height:1.6; padding-left:22px; border-left:2px solid var(--rose); color:var(--ink)}
+
+/* quick answer box */
+.quick{background:var(--surface); border:1px solid var(--line); padding:26px 28px; position:relative}
+.quick::before{content:"Quick answer"; position:absolute; top:-9px; left:22px; background:var(--bg); padding:0 8px; font:600 11px/1.5 var(--body); letter-spacing:.14em; text-transform:uppercase; color:var(--rose-deep)}
+.quick p{font-size:18px}
+
+/* definition sentence */
+.define{font:italic 400 21px/1.5 var(--display)}
+
+/* numbers / comparison table */
+.numbers{margin-top:1.6em; border-top:1px solid var(--ink)}
+.numbers table{width:100%; border-collapse:collapse; font-size:16px; font-variant-numeric:lining-nums tabular-nums}
+.numbers caption{caption-side:top; text-align:left; font:600 11px/1.5 var(--body); letter-spacing:.14em; text-transform:uppercase; color:var(--rose-deep); padding:14px 0 6px}
+.numbers th,.numbers td{text-align:left; padding:12px 10px 12px 0; border-bottom:1px solid var(--line); vertical-align:top}
+.numbers thead th{font:600 13px/1.3 var(--body); color:var(--muted)}
+.numbers td:last-child,.numbers th:last-child{text-align:right; padding-right:0; white-space:nowrap}
+.numbers tbody th{font-weight:400}
+.numbers .src{font-size:13px; color:var(--muted); margin-top:10px}
+@media (max-width:560px){.numbers table{font-size:15px}}
+
+/* pull note */
+.note{font:italic 400 22px/1.45 var(--display); color:var(--rose-deep); padding-block:8px; border-block:1px solid var(--line); text-align:center; margin-block:1.8em!important}
+
+/* FAQ inside an article: single column */
+.a-faq{max-width:680px; margin:0 auto; padding-block:24px 8px}
+.a-faq h2{font-size:clamp(30px,3.4vw,40px); margin-bottom:20px}
+.a-faq dl{margin:0; border-top:1px solid var(--line)}
+.a-faq details{border-bottom:1px solid var(--line)}
+.a-faq summary{cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:16px; padding:20px 2px; font:400 21px/1.3 var(--display)}
+.a-faq summary::-webkit-details-marker{display:none}
+.a-faq summary::after{content:"+"; color:var(--rose); font:300 26px/1 var(--body); transition:transform .25s}
+.a-faq details[open] summary::after{transform:rotate(45deg)}
+.a-faq details p{padding:0 2px 22px; color:var(--muted); font-size:17px; line-height:1.65}
+
+/* sources */
+.sources{max-width:680px; margin:0 auto; padding-block:32px 8px; font-size:14px; color:var(--muted)}
+.sources h2{font:600 11px/1.5 var(--body); letter-spacing:.14em; text-transform:uppercase; color:var(--rose-deep); margin-bottom:10px}
+.sources ol{padding-left:1.3em; margin:0; display:grid; gap:6px}
+.sources a{color:var(--muted)}
+
+/* author */
+.author{max-width:680px; margin:40px auto 0; display:grid; grid-template-columns:84px 1fr; gap:20px; align-items:center; padding-block:28px; border-block:1px solid var(--line)}
+.author img{width:84px; height:84px; border-radius:50%; object-fit:cover; object-position:50% 20%; background:var(--rose-soft)}
+.author b{display:block; font:400 22px/1.2 var(--display)}
+.author p{color:var(--muted); font-size:15px; margin-top:4px}
+
+/* quote CTA: reuses .cta from site.css, adds a second button */
+.a-cta{padding-block:64px 24px}
+.a-cta .cta .row{display:flex; gap:12px; flex-wrap:wrap}
+.a-cta .cta .btn.alt{background:transparent; color:var(--on-green); box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--on-green) 45%, transparent)}
+.a-cta .cta .btn.alt:hover{background:var(--brass); color:#fff; box-shadow:none}
+.a-cta .cta small{color:color-mix(in srgb, var(--on-green) 70%, transparent); font-size:13px}
+
+/* related */
+.related{padding-block:48px 24px}
+.related h2{font-size:clamp(28px,3vw,36px); margin-bottom:24px}
+
+/* ---------- homepage strip ---------- */
+.j-strip .head{display:flex; justify-content:space-between; align-items:end; gap:20px; flex-wrap:wrap; margin-bottom:32px}
+.j-strip h2{font-size:clamp(32px,4.4vw,54px)}
+.j-strip .j-grid{padding-block:0}

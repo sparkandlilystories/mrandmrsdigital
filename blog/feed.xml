@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Journal — Mr &amp; Mrs Digital</title>
+    <link>https://mrandmrsdigital.com/blog/</link>
+    <atom:link href="https://mrandmrsdigital.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Straight answers about AI product photos and videos for small brands, Shopify and TikTok Shop sellers.</description>
+    <language>en-gb</language>
+    <lastBuildDate>Tue, 03 Nov 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>How much does AI product photography cost for a small brand?</title>
+      <link>https://mrandmrsdigital.com/blog/how-much-does-ai-product-photography-cost/</link>
+      <guid>https://mrandmrsdigital.com/blog/how-much-does-ai-product-photography-cost/</guid>
+      <pubDate>Tue, 03 Nov 2026 09:00:00 GMT</pubDate>
+      <description>AI product photos cost from £35 an image, or £495 a month for 15 images and 3 videos. Here is how that compares with UK photographer, studio and model costs.</description>
+    </item>
+  </channel>
+</rss>
