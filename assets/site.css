@@ -386,3 +386,56 @@ footer{letter-spacing:0; font-size:14px}
 .svc-wide p{font-size:16px; max-width:38ch}
 .svc .new{font:italic 400 15px/1 var(--display); color:var(--brass); letter-spacing:.02em}
 @media (max-width:860px){.svc-wide{grid-template-columns:1fr}.svc-wide .m{aspect-ratio:4/3}.svc-wide .t{padding:20px 0 0; gap:8px}.svc-wide h3{font-size:32px}.svc-wide p{font-size:16px}}
+
+/* ---- 3D demo band: a dark window into the immersive demo ---- */
+.showpiece{--sp-bg:#0c0908; --sp-ink:#f3eadc; --sp-muted:#b9ab98; --sp-gold:#d6b478; --sp-rose:#d99aa0;
+  position:relative; background:var(--sp-bg); color:var(--sp-ink); overflow:hidden; padding-block:clamp(64px,9vw,112px)}
+.showpiece::before{content:""; position:absolute; inset:0; pointer-events:none; background:radial-gradient(55% 60% at 72% 50%, rgba(214,154,120,.16), transparent 70%)}
+.showpiece .wrap{position:relative; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:clamp(32px,6vw,96px); align-items:center}
+.sp-copy{display:grid; gap:20px; justify-items:start; max-width:34rem}
+.showpiece .eyebrow{color:var(--sp-gold)}
+.showpiece h2{font:400 clamp(42px,5.6vw,76px)/1.02 var(--display); color:var(--sp-ink)}
+.sp-copy > p{color:var(--sp-muted); font-size:17px; line-height:1.65; max-width:40ch}
+.showpiece .btn{background:var(--sp-ink); color:var(--sp-bg); margin-top:6px}
+.showpiece .btn:hover{background:var(--sp-rose); color:var(--sp-bg)}
+.sp-note{font:italic 400 15px/1.4 var(--body); color:var(--sp-muted)}
+.sp-phone{display:block; width:clamp(230px,23vw,292px); padding:9px; border-radius:38px; border:1px solid rgba(214,180,120,.45); background:#050403; box-shadow:0 40px 80px -30px rgba(0,0,0,.8), 0 0 0 6px rgba(214,180,120,.05); text-decoration:none}
+.sp-phone video,.sp-phone img{width:100%; aspect-ratio:540/1002; object-fit:cover; border-radius:29px; background:#110c0b}
+.sp-phone:focus-visible{outline-color:var(--sp-gold)}
+@media (max-width:760px){
+  .showpiece .wrap{grid-template-columns:1fr; gap:28px}
+  .sp-phone{order:-1; width:100%; padding:0; border:0; border-radius:0; background:none; box-shadow:none}
+  .sp-phone video,.sp-phone img{border-radius:0; max-height:64vh; outline:1px solid rgba(214,180,120,.3); outline-offset:6px}
+  .showpiece h2{font-size:clamp(40px,11vw,54px)}
+}
+
+/* ---- websites we have built ---- */
+.sites-sec{padding-block:clamp(72px,9vw,112px) clamp(56px,7vw,88px)}
+.sites{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(28px,4vw,56px)}
+.site{display:grid; gap:18px; align-content:start}
+.browser{display:block; text-decoration:none; background:var(--surface); border:1px solid var(--line); border-radius:0; overflow:hidden; transition:border-color .3s}
+.browser:hover{border-color:var(--rose)}
+.browser .bar{display:flex; align-items:center; padding:10px 16px; border-bottom:1px solid var(--line); font:italic 400 14px/1 var(--body); color:var(--muted)}
+.browser .screen{display:block; position:relative; aspect-ratio:16/11; overflow:hidden; container-type:size; background:var(--rose-soft)}
+.browser .screen img{position:absolute; inset:0 0 auto; width:100%; height:auto; transform:translateY(0); transition:transform 1.2s ease}
+.browser:hover .screen img,.browser:focus-visible .screen img{transform:translateY(calc(-100% + 100cqh)); transition:transform 14s linear}
+.browser.auto .screen img{animation:site-scroll 22s ease-in-out infinite alternate}
+@keyframes site-scroll{0%,8%{transform:translateY(0)}92%,100%{transform:translateY(calc(-100% + 100cqh))}}
+.site h3{font:400 30px/1.1 var(--display)}
+.site p{color:var(--muted); max-width:44ch}
+.site .go,.looks-row .go{font:italic 400 16px/1 var(--body); color:var(--rose-deep); text-underline-offset:4px; justify-self:start}
+.site .go:hover,.looks-row .go:hover{text-decoration-color:var(--rose)}
+.looks-row{display:grid; grid-template-columns:minmax(0,15rem) repeat(3,minmax(0,1fr)); gap:clamp(16px,2.4vw,28px); align-items:start; margin-top:clamp(48px,6vw,72px); padding-top:24px; border-top:1px solid var(--brass)}
+.looks-row .lead{display:grid; gap:14px; justify-items:start}
+.looks-row .lead p{font:400 24px/1.2 var(--display); color:var(--ink)}
+.looks-row figure{margin:0}
+.looks-row video{width:100%; aspect-ratio:1280/706; object-fit:cover; background:var(--rose-soft)}
+.looks-row figcaption{margin-top:10px; font:italic 400 15px/1.3 var(--body); color:var(--muted)}
+.looks-row figcaption b{font:400 19px/1 var(--display); font-style:normal; color:var(--ink); margin-right:6px}
+@media (max-width:860px){
+  .sites{grid-template-columns:1fr}
+  .looks-row{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion: reduce){
+  .browser .screen img,.browser:hover .screen img{transition:none; transform:none; animation:none}
+}
