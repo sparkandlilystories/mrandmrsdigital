@@ -425,6 +425,11 @@ footer{letter-spacing:0; font-size:14px}
 .site p{color:var(--muted); max-width:44ch}
 .site .go,.looks-row .go{font:italic 400 16px/1 var(--body); color:var(--rose-deep); text-underline-offset:4px; justify-self:start}
 .site .go:hover,.looks-row .go:hover{text-decoration-color:var(--rose)}
+.concepts{margin-top:clamp(48px,6vw,72px); padding-top:24px; border-top:1px solid var(--brass)}
+.concepts-head{display:grid; grid-template-columns:minmax(0,15rem) minmax(0,1fr); gap:clamp(16px,2.4vw,28px); align-items:baseline; margin-bottom:clamp(28px,3.5vw,40px)}
+.concepts-head .lead{font:400 24px/1.2 var(--display); color:var(--ink)}
+.concepts-head p:not(.lead){color:var(--muted); max-width:52ch}
+@media (max-width:860px){.concepts-head{grid-template-columns:1fr; gap:8px}}
 .looks-row{display:grid; grid-template-columns:minmax(0,15rem) repeat(3,minmax(0,1fr)); gap:clamp(16px,2.4vw,28px); align-items:start; margin-top:clamp(48px,6vw,72px); padding-top:24px; border-top:1px solid var(--brass)}
 .looks-row .lead{display:grid; gap:14px; justify-items:start}
 .looks-row .lead p{font:400 24px/1.2 var(--display); color:var(--ink)}
@@ -439,3 +444,6 @@ footer{letter-spacing:0; font-size:14px}
 @media (prefers-reduced-motion: reduce){
   .browser .screen img,.browser:hover .screen img{transition:none; transform:none; animation:none}
 }
+
+/* concept sites on the webdesign page */
+.concepts-wd{margin-top:0; padding-block:clamp(56px,7vw,88px) clamp(32px,4vw,48px); border-top:1px solid var(--brass)}
