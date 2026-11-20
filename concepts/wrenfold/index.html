@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wrenfold Kitchens · Concept site</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="A concept site for a fictional Norwich kitchen maker, by Mr & Mrs Digital.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@400;500;600&display=swap">
+<style>
+/* Wrenfold Kitchens — concept by Mr & Mrs Digital. Fictional brand. */
+@property --accent{syntax:"<color>";inherits:true;initial-value:#1F2A44}
+:root{
+  --paper:#F3EDE2; --paper2:#EAE2D3; --ink:#2E2219; --muted:#6E5F51; --line:#D9CDBB;
+  --accent:#1F2A44;   /* follows the chosen door colour */
+  --display:"Fraunces",Georgia,serif; --body:"Manrope",system-ui,-apple-system,Arial,sans-serif;
+  color-scheme:light;
+  transition:--accent .8s ease;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{font-family:var(--display);font-weight:350;letter-spacing:-.01em;line-height:1.02;margin:0;font-variation-settings:"opsz" 144}
+h1 em,h2 em{font-style:italic;font-weight:300;color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:14px 26px;border-radius:999px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.06em;transition:transform .2s,background .8s}
+.btn:hover{transform:translateY(-2px)}
+.btn.accent{background:var(--accent)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+
+.ribbon{background:var(--ink);color:var(--paper2);font-size:12px;text-align:center;padding:7px 16px;letter-spacing:.03em}
+.ribbon a{color:inherit}
+.nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-block:14px}
+.logo{font-family:var(--display);font-size:22px;font-weight:400;letter-spacing:.02em;text-decoration:none;white-space:nowrap}
+.logo i{font-weight:300;color:var(--accent);transition:color .8s}
+.links{display:flex;gap:28px;align-items:center}
+.links a:not(.btn){text-decoration:none;font-size:15px}
+.links .btn{min-height:44px;padding:10px 18px;font-size:13px;white-space:nowrap}
+@media (max-width:860px){.links a:not(.btn){display:none}.logo{font-size:19px}}
+
+/* 1. hero: the kitchen builds itself as you scroll */
+.build{position:relative;height:320vh}
+.build .stage{position:sticky;top:0;height:100svh;overflow:hidden;background:#EFE6D6}
+.build canvas,.build .still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:46% 60%}
+.build .sharp{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:46% 60%;opacity:0;pointer-events:none}
+#sharpA{opacity:1}
+@media (max-width:760px),(prefers-reduced-motion:reduce){.build .sharp{display:none}}
+.build .still{display:none}
+.build .mobvid{display:none}
+@media (prefers-reduced-motion:reduce) and (min-width:761px){.build{height:auto}.build .stage{position:relative}.build canvas{display:none}.build .still{display:block}.build .hint{display:none}}
+.build .copy{position:absolute;left:0;right:0;top:clamp(76px,12vh,120px);z-index:2}
+.build h1{font-size:clamp(46px,7.4vw,112px);max-width:11ch}
+.build p{max-width:30ch;font-size:18px;color:var(--muted);margin:18px 0 0}
+.build .hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);z-index:2}
+.build .done{position:absolute;left:0;right:0;bottom:clamp(40px,8vh,80px);z-index:2;opacity:0;transition:opacity .6s}
+.build .done.on{opacity:1}
+.build .done .pill{display:inline-block;background:color-mix(in srgb,var(--paper) 90%,transparent);border-radius:999px;padding:10px 18px;font-size:14px}
+@media (max-width:760px){
+  .build{height:auto}
+  .build .stage{position:relative;height:auto;display:flex;flex-direction:column}
+  .build canvas{display:none}
+  .build .still{display:none}
+  .build .mobvid{display:block;position:relative;width:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:46% 60%;order:2}
+  .build .copy{position:relative;top:auto;padding-block:36px 26px;order:1}
+  .build .hint,.build .done{display:none}
+}
+
+/* 2. make it yours */
+.yours{padding-block:110px 100px}
+.yours-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:34px}
+.yours h2{font-size:clamp(46px,6.6vw,96px)}
+.yours-head p{color:var(--muted);max-width:40ch;margin:0}
+.viewer{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:16/9;background:var(--paper2)}
+.viewer img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}
+.viewer img.on{opacity:1}
+.swatches{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;align-items:center}
+.sw{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:8px 18px 8px 8px;border-radius:999px;border:1.5px solid var(--line);background:transparent;font:500 15px var(--body);color:var(--ink);cursor:pointer;transition:border-color .3s,background .3s}
+.sw i{width:32px;height:32px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.sw[aria-pressed="true"]{border-color:var(--ink);background:#fff}
+.chosen{margin-left:auto;font-family:var(--display);font-style:italic;font-size:22px;color:var(--accent)}
+@media (max-width:860px){.yours{padding-block:72px}.yours-head{grid-template-columns:1fr;gap:14px}.viewer{aspect-ratio:4/3.4;border-radius:20px}.viewer img{object-position:46% 60%}.chosen{margin-left:0;width:100%}}
+
+/* 3. process */
+.process{background:var(--paper2);padding-block:100px}
+.process h2{font-size:clamp(40px,5vw,70px);margin-bottom:46px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;counter-reset:s}
+.step{border-top:1.5px solid var(--ink);padding-top:18px}
+.step b{display:block;font-family:var(--display);font-weight:400;font-size:28px;margin-bottom:8px}
+.step b::before{counter-increment:s;content:"0" counter(s) "  ";font-family:var(--body);font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.1em;vertical-align:middle;transition:color .8s}
+.step p{margin:0;color:var(--muted);font-size:16px}
+@media (max-width:860px){.process{padding-block:72px}.steps{grid-template-columns:1fr 1fr;gap:26px}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+
+/* 4. materials */
+.materials{padding-block:110px}
+.mat-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}
+.mat-grid img{border-radius:26px;width:100%}
+.materials h2{font-size:clamp(40px,5vw,70px);margin:12px 0 18px}
+.materials ul{list-style:none;padding:0;margin:0 0 30px;display:grid;gap:12px}
+.materials li{display:flex;gap:14px;align-items:baseline}
+.materials li b{min-width:92px;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+@media (max-width:860px){.materials{padding-block:72px}.mat-grid{grid-template-columns:1fr;gap:30px}}
+
+/* 5. workshop: cinematic full-bleed */
+.shot{position:relative;height:100svh;min-height:520px;overflow:hidden}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(20,14,10,.68))}
+.shot p{position:absolute;left:0;right:0;bottom:clamp(36px,8vh,80px);z-index:2;margin:0 auto;text-shadow:0 1px 18px rgba(20,14,10,.45);color:#F6EFE4;font-family:var(--display);font-style:italic;font-weight:300;font-size:clamp(34px,5vw,64px);line-height:1.05}
+.shot small{display:block;font-family:var(--body);font-style:normal;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px;opacity:.85}
+@media (max-width:760px){.shot{height:78svh}}
+
+/* 6. gallery */
+.gallery{padding-block:110px}
+.gallery h2{font-size:clamp(40px,5vw,70px);margin:12px 0 40px}
+.g-grid{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:auto auto;gap:20px}
+.g-grid figure{margin:0;border-radius:22px;overflow:hidden;position:relative;background:var(--paper2)}
+.g-grid figure:first-child{grid-row:span 2}
+.g-grid img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10}
+.g-grid figure:first-child img{aspect-ratio:auto;min-height:100%}
+.g-grid figcaption{position:absolute;left:14px;bottom:14px;background:color-mix(in srgb,var(--paper) 92%,transparent);border-radius:999px;padding:7px 14px;font-size:13px}
+@media (max-width:760px){.gallery{padding-block:72px}.g-grid{grid-template-columns:1fr}.g-grid figure:first-child{grid-row:auto}.g-grid figure:first-child img{aspect-ratio:16/10}}
+
+/* 7. contact */
+.visit{background:var(--ink);color:var(--paper);padding-block:110px}
+.visit .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:end}
+.visit h2{font-size:clamp(46px,6.6vw,96px)}
+.visit h2 em{color:color-mix(in srgb,var(--accent) 55%,#fff)}
+.visit .eyebrow{color:color-mix(in srgb,var(--paper) 70%,var(--ink))}
+.visit dl{display:grid;gap:14px;margin:0 0 30px}
+.visit dl div{display:grid;grid-template-columns:110px 1fr;gap:12px}
+.visit dt{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;opacity:.7;padding-top:4px}
+.visit dd{margin:0}
+.visit .btn{background:var(--paper);color:var(--ink)}
+@media (max-width:860px){.visit{padding-block:72px}.visit .wrap{grid-template-columns:1fr}.visit dl div{grid-template-columns:1fr;gap:2px}}
+footer{background:#1E160F;color:#CDBFAE;padding-block:36px 110px;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.bookbar{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:12px 14px calc(12px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;pointer-events:none;transform:translateY(120%);transition:transform .4s}
+.bookbar.show{transform:none}
+.bookbar a{pointer-events:auto;width:min(420px,100%);box-shadow:0 12px 30px rgba(0,0,0,.25)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="ribbon">Fictional kitchen maker · concept site by Mr &amp; Mrs Digital · <a href="/">back to mrandmrsdigital.com</a></div>
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top">Wren<i>fold</i></a>
+  <nav class="links" aria-label="Main"><a href="#yours">Colours</a><a href="#process">How we work</a><a href="#kitchens">Kitchens</a><a class="btn accent" href="#visit">Book a home visit</a></nav>
+</div></header>
+
+<main id="top">
+  <section class="build" id="build" aria-label="A kitchen building itself in an empty room">
+    <div class="stage">
+      <canvas id="buildCanvas" aria-hidden="true"></canvas>
+      <img class="sharp" id="sharpA" src="img/build-start.jpg" alt="" aria-hidden="true">
+      <img class="sharp" id="sharpB" src="img/build-end.jpg" alt="" aria-hidden="true" loading="lazy">
+      <img class="still" src="img/build-start.jpg" alt="An empty, sunlit room ready for a new kitchen">
+      <video class="mobvid" muted playsinline loop preload="none" poster="img/room-empty.jpg" aria-label="An empty room where a navy kitchen builds itself piece by piece"><source src="img/build-silent.mp4" type="video/mp4"></video>
+      <div class="copy wrap">
+        <span class="eyebrow">Handmade kitchens · Norwich</span>
+        <h1 style="margin-top:14px">A kitchen made for <em>your</em> room.</h1>
+        <p>We start with an empty space and build a kitchen that could only ever belong there.</p>
+      </div>
+      <div class="done wrap" id="buildDone"><span class="pill">Measured, made and fitted by one small team.</span></div>
+      <div class="hint" id="hint">Scroll</div>
+    </div>
+  </section>
+
+  <section class="yours wrap" id="yours">
+    <div class="yours-head">
+      <div><span class="eyebrow">Same kitchen, your colour</span><h2 style="margin-top:12px">Make it <em>yours</em>.</h2></div>
+      <p>Every Wrenfold kitchen is painted or oiled by hand. Try the four finishes our clients choose most.</p>
+    </div>
+    <div class="viewer" id="viewer">
+      <img class="on" src="img/kitchen-navy.jpg" alt="The kitchen in Classic Navy" data-k="navy">
+      <img src="img/kitchen-sage.jpg" alt="The kitchen in Country Sage" data-k="sage">
+      <img src="img/kitchen-terracotta.jpg" alt="The kitchen in Warm Clay" data-k="clay">
+      <img src="img/kitchen-oak.jpg" alt="The kitchen in Natural Oak" data-k="oak">
+    </div>
+    <div class="swatches" role="group" aria-label="Choose a finish">
+      <button class="sw" type="button" data-k="navy" data-c="#1F2A44" aria-pressed="true"><i style="background:#1F2A44"></i>Classic Navy</button>
+      <button class="sw" type="button" data-k="sage" data-c="#6F8160" aria-pressed="false"><i style="background:#8A9A7B"></i>Country Sage</button>
+      <button class="sw" type="button" data-k="clay" data-c="#A9532F" aria-pressed="false"><i style="background:#B5603F"></i>Warm Clay</button>
+      <button class="sw" type="button" data-k="oak" data-c="#9A6A35" aria-pressed="false"><i style="background:#C49A62"></i>Natural Oak</button>
+      <span class="chosen" id="chosen" aria-live="polite">Classic Navy</span>
+    </div>
+  </section>
+
+  <section class="process" id="process"><div class="wrap">
+    <span class="eyebrow">How we work</span>
+    <h2 style="margin-top:12px">Four visits, <em>one</em> kitchen.</h2>
+    <div class="steps">
+      <div class="step"><b>Measure</b><p>We come to your home, measure every wall and listen to how you cook.</p></div>
+      <div class="step"><b>Design</b><p>You get hand-drawn plans and real samples to hold, not just a screen.</p></div>
+      <div class="step"><b>Make</b><p>Every cabinet is built in our workshop from solid oak and birch ply.</p></div>
+      <div class="step"><b>Fit</b><p>The same team that made it fits it, then paints it in place.</p></div>
+    </div>
+  </div></section>
+
+  <section class="materials wrap" aria-label="Materials">
+    <div class="mat-grid">
+      <img src="img/materials.jpg" alt="Samples on linen: an oak door, a limestone offcut and painted doors in navy, sage and clay" loading="lazy">
+      <div>
+        <span class="eyebrow">What it's made of</span>
+        <h2>Things you can <em>touch</em>.</h2>
+        <ul>
+          <li><b>Doors</b><span>Solid oak frames, painted or oiled by hand</span></li>
+          <li><b>Worktops</b><span>Honed limestone or oiled oak</span></li>
+          <li><b>Handles</b><span>Unlacquered brass that softens with use</span></li>
+        </ul>
+        <a class="btn ghost" href="#visit">Ask for samples</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="shot" aria-label="From the workshop">
+    <img src="img/workshop-paint.jpg" alt="A brush laying navy paint onto a shaker cabinet door, an open paint tin beside it" style="object-position:30% 50%" loading="lazy">
+    <p class="wrap"><small>From the workshop</small>Painted by hand, coat by coat.</p>
+  </section>
+  <section class="shot" aria-label="Finished detail">
+    <img src="img/drawer.jpg" alt="A navy drawer with a brass handle pulled open to show an oak drawer box with plates" loading="lazy">
+    <p class="wrap"><small>The details</small>Built to be opened every day.</p>
+  </section>
+
+  <section class="gallery wrap" id="kitchens">
+    <span class="eyebrow">Recent kitchens</span>
+    <h2>Every room asks for <em>something different</em>.</h2>
+    <div class="g-grid">
+      <figure><img src="img/gallery-oak-original.jpg" alt="A natural oak kitchen with tall wall cabinets and brass pendants" loading="lazy"><figcaption>Natural oak · Thorpe</figcaption></figure>
+      <figure><img src="img/gallery-sage-layout2.jpg" alt="An L-shaped sage green kitchen with a tall larder" loading="lazy"><figcaption>Sage L-shape · Eaton</figcaption></figure>
+      <figure><img src="img/gallery-terracotta-layout3.jpg" alt="A terracotta kitchen with a compact island and three brass lights" loading="lazy"><figcaption>Clay with island · Unthank Road</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="visit" id="visit"><div class="wrap">
+    <div><span class="eyebrow">Start here</span><h2 style="margin-top:12px">Book a <em>home visit</em>.</h2></div>
+    <div>
+      <dl>
+        <div><dt>Workshop</dt><dd>Wren Yard, Norwich (fictional)</dd></div>
+        <div><dt>Visits</dt><dd>Within 30 miles of Norwich, free of charge</dd></div>
+        <div><dt>Lead time</dt><dd>Usually 10–14 weeks from design to fitting</dd></div>
+      </dl>
+      <a class="btn" href="#top">Book a home visit</a>
+    </div>
+  </div></section>
+</main>
+<footer><div class="wrap"><span>Wrenfold Kitchens is a fictional brand.</span><span>Concept by Mr &amp; Mrs Digital</span></div></footer>
+<div class="bookbar" id="bookbar"><a class="btn accent" href="#visit">Book a home visit</a></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var root=document.documentElement,$=function(i){return document.getElementById(i)};
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var small=matchMedia("(max-width:760px)").matches;
+
+  /* colour switch: image + site accent follow the chosen finish */
+  var imgs=[].slice.call(document.querySelectorAll("#viewer img"));
+  document.querySelectorAll(".sw").forEach(function(b){
+    b.addEventListener("click",function(){
+      document.querySelectorAll(".sw").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});
+      imgs.forEach(function(i){i.classList.toggle("on",i.dataset.k===b.dataset.k)});
+      root.style.setProperty("--accent",b.dataset.c);
+      $("chosen").textContent=b.textContent.trim();
+    });
+  });
+
+  /* sticky book bar */
+  var bar=$("bookbar");function bc(){bar.classList.toggle("show",scrollY>innerHeight*1.2&&scrollY<document.body.scrollHeight-innerHeight*1.6)}
+  addEventListener("scroll",bc,{passive:true});bc();
+
+  /* phones: play the build film once it is on screen */
+  var mv=document.querySelector(".mobvid");
+  if(small&&mv&&!reduce&&"IntersectionObserver" in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){mv.preload="auto";mv.play().catch(function(){})}else mv.pause()})},{threshold:.4}).observe(mv)}
+  if(small||reduce||!window.gsap||!window.ScrollTrigger)return;
+  gsap.registerPlugin(ScrollTrigger);
+  try{var lenis=new Lenis({lerp:.09});lenis.on("scroll",ScrollTrigger.update);gsap.ticker.add(function(t){lenis.raf(t*1000)});gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){var t=document.querySelector(a.getAttribute("href"));if(t){e.preventDefault();lenis.scrollTo(t)}})});}catch(e){}
+
+  /* scroll-driven build: 91 frames */
+  var N=91,frames=[],cv=$("buildCanvas"),ctx=cv.getContext("2d"),cur=-1,state={f:0};
+  function src(i){return "img/build/f_"+String(i+1).padStart(3,"0")+".webp"}
+  for(var i=0;i<N;i++){var im=new Image();im.src=src(i);frames.push(im)}
+  function size(){var r=Math.min(devicePixelRatio||1,2);cv.width=cv.clientWidth*r;cv.height=cv.clientHeight*r;cur=-1;draw()}
+  function draw(){var i=Math.round(state.f);var im=frames[i];if(!im||!im.complete||!im.naturalWidth){for(var k=i;k>=0;k--){if(frames[k].complete&&frames[k].naturalWidth){im=frames[k];break}}}
+    if(!im||i===cur&&cv.dataset.w==cv.width)return;cur=i;cv.dataset.w=cv.width;ctx.imageSmoothingQuality="high";
+    var cw=cv.width,ch=cv.height,iw=im.naturalWidth,ih=im.naturalHeight,s=Math.max(cw/iw,ch/ih),w=iw*s,h=ih*s;
+    ctx.drawImage(im,(cw-w)*.46,(ch-h)*.6,w,h)}
+  frames[0].onload=size;addEventListener("resize",size);size();
+  gsap.to(state,{f:N-1,ease:"none",onUpdate:draw,scrollTrigger:{trigger:"#build",start:"top top",end:"bottom bottom",scrub:.4,
+    onUpdate:function(s){var p=s.progress;$("sharpA").style.opacity=Math.max(0,Math.min(1,1-(p-.01)/.06));$("sharpB").style.opacity=Math.max(0,Math.min(1,(p-.88)/.08));$("buildDone").classList.toggle("on",s.progress>.92);$("hint").style.opacity=s.progress>.05?0:1}}});
+  gsap.to("#build .copy",{opacity:0,y:-30,ease:"none",scrollTrigger:{trigger:"#build",start:"top top",end:"20% top",scrub:true}});
+  document.querySelectorAll(".shot img").forEach(function(img){gsap.fromTo(img,{scale:1.12},{scale:1,ease:"none",scrollTrigger:{trigger:img.parentNode,start:"top bottom",end:"bottom top",scrub:true}})});
+})();
+</script>
+<script data-goatcounter="https://mrandmrsdigital.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
