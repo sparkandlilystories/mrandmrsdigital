@@ -101,6 +101,46 @@
  ]
 }
 </script>
+
+<style>
+/* hero: living silk background (Nov 2026) */
+.hero-silk{--silk-ink:#f7e9ec; --silk-muted:rgba(247,233,236,.78); --silk-line:rgba(204,207,218,.45);
+  position:relative; isolation:isolate; padding:clamp(40px,7vh,88px) 0 clamp(64px,10vh,120px); min-height:calc(100svh - 66px); display:flex; align-items:center; color:var(--silk-ink); background:#4a0711 url(assets/silk/hero-silk-cherry.jpg) center/cover no-repeat; overflow:hidden}
+.silk-bg{position:absolute; inset:0; z-index:-1}
+.silk-bg video{width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.2s ease}
+.silk-bg video.on{opacity:1}
+.silk-shade{position:absolute; inset:0; background:
+  linear-gradient(90deg, rgba(34,3,9,.78) 0%, rgba(34,3,9,.55) 38%, rgba(34,3,9,.12) 72%, rgba(34,3,9,.05) 100%),
+  linear-gradient(180deg, rgba(12,9,8,0) 70%, #0c0908 100%)}
+.silk-grid{display:grid; grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr); gap:clamp(32px,5vw,80px); align-items:center; width:100%}
+.silk-copy{display:grid; gap:22px; justify-items:start}
+.hero-silk .greet{color:var(--silk-ink); font-size:clamp(44px,5.6vw,88px); text-shadow:0 2px 30px rgba(20,0,5,.35)}
+.hero-silk h1{font:400 clamp(22px,2.2vw,30px)/1.3 var(--display); max-width:26ch; color:var(--silk-ink); letter-spacing:-.005em; padding-top:18px; border-top:1px solid var(--silk-line)}
+.hero-silk .lead{margin:0; color:var(--silk-muted); max-width:46ch}
+.hero-silk .row{display:flex; gap:10px; flex-wrap:wrap; padding-top:4px}
+.hero-silk .btn{background:#f7e9ec; color:#5c0a17}
+.hero-silk .btn:hover{background:#fff; color:#5c0a17}
+.hero-silk .btn.ghost{background:transparent; color:var(--silk-ink); box-shadow:inset 0 0 0 1.5px var(--silk-line)}
+.hero-silk .btn.ghost:hover{box-shadow:inset 0 0 0 1.5px #ccd0da; color:#fff}
+.silk-portrait{margin:0; display:grid; gap:16px; justify-items:center}
+.hero-silk .hero-film{height:auto; width:min(100%, 440px); aspect-ratio:4/5; border-radius:26px; background:#6b1020; box-shadow:0 40px 80px -30px rgba(10,0,3,.75), 0 0 0 1px rgba(204,207,218,.35); transform:rotate(1.5deg)}
+.hero-silk .hero-film video{object-position:44% 30%}
+.hero-silk .hero-aside{justify-items:center; text-align:center; padding:0}
+.hero-silk .sound{color:var(--silk-ink)}
+.hero-silk .sound .disc{background:#f7e9ec; color:#5c0a17}
+.hero-silk .sound:hover .disc,.hero-silk .sound[aria-pressed="true"] .disc{background:#ccd0da; color:#3a0610}
+.hero-silk .hero-aside .caption{color:var(--silk-muted); margin:0}
+@media (max-width:760px){
+  .hero-silk{background-image:url(assets/silk/hero-silk-cherry-mobile.jpg); padding:28px 0 72px; min-height:0}
+  .silk-shade{background:linear-gradient(180deg, rgba(34,3,9,.25) 0%, rgba(34,3,9,.45) 45%, rgba(34,3,9,.7) 75%, #0c0908 100%)}
+  .silk-grid{grid-template-columns:1fr; gap:30px}
+  .silk-portrait{order:-1}
+  .hero-silk .hero-film{width:min(82%, 340px); transform:rotate(1.2deg)}
+  .hero-silk .greet{font-size:clamp(40px,11vw,56px)}
+}
+@media (prefers-reduced-motion:reduce){.silk-bg video{display:none}.hero-silk .hero-film{transform:none}}
+</style>
+
 </head>
 <body>
 
@@ -120,36 +160,38 @@
 </header>
 
 <main id="top">
-  <section class="hero">
-    <div class="hero-film" id="heroMedia">
-      <video id="heroVideo" autoplay muted loop playsinline poster="assets/hero-welcome.jpg" preload="auto" aria-label="Mrs Digital, as her AI twin, welcoming you in a sunlit studio">
-        <source src="assets/hero-welcome.mp4" type="video/mp4">
-      </video>
+  <section class="hero hero-silk" aria-label="Welcome">
+    <div class="silk-bg" aria-hidden="true">
+      <video id="silkVideo" muted loop playsinline preload="none"></video>
+      <div class="silk-shade"></div>
     </div>
-    <div class="wrap hero-greet">
-      <p class="greet">Hi, welcome to Mr&nbsp;&amp;&nbsp;Mrs Digital.</p>
-      <div class="hero-aside">
-        <button class="sound" id="heroSound" type="button" aria-pressed="false">
-          <span class="disc" aria-hidden="true">
-            <svg class="play" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>
-            <svg class="pause" viewBox="0 0 16 16"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" fill="currentColor"/></svg>
-          </span>
-          <span class="lbl">Hear Mrs Digital say hello</span>
-        </button>
-        <p class="caption">That’s me, as my AI twin. We made her the same way we make your visuals.</p>
-      </div>
-    </div>
-    <div class="wrap">
-      <div class="hero-intro">
+    <div class="wrap silk-grid">
+      <div class="silk-copy">
+        <p class="greet">Hi, welcome to Mr&nbsp;&amp;&nbsp;Mrs Digital.</p>
         <h1>Websites for product brands, filled with visuals from our own studio.</h1>
-        <div class="side">
-          <p>We design and build your website, then fill it with campaign images and videos made around your products. No stock photos, no photoshoot, no waiting on someone else’s content. It launches looking finished, and we can keep it fresh every month.</p>
-          <div class="row">
-            <a class="btn" href="contact-us">Get a quote</a>
-            <a class="btn ghost" href="#websites">See our websites</a>
-          </div>
+        <p class="lead">We design and build your website, then fill it with campaign images and videos made around your products. No stock photos, no photoshoot, no waiting on someone else’s content. It launches looking finished, and we can keep it fresh every month.</p>
+        <div class="row">
+          <a class="btn" href="contact-us">Get a quote</a>
+          <a class="btn ghost" href="#websites">See our websites</a>
         </div>
       </div>
+      <figure class="silk-portrait">
+        <div class="hero-film" id="heroMedia">
+          <video id="heroVideo" autoplay muted loop playsinline poster="assets/hero-welcome.jpg" preload="auto" aria-label="Mrs Digital, as her AI twin, welcoming you in a sunlit studio">
+            <source src="assets/hero-welcome.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption class="hero-aside">
+          <button class="sound" id="heroSound" type="button" aria-pressed="false">
+            <span class="disc" aria-hidden="true">
+              <svg class="play" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>
+              <svg class="pause" viewBox="0 0 16 16"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" fill="currentColor"/></svg>
+            </span>
+            <span class="lbl">Hear Mrs Digital say hello</span>
+          </button>
+          <p class="caption">That’s me, as my AI twin. We made her the same way we make your visuals.</p>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -500,5 +542,16 @@
 </script>
 <script src="assets/menu.js" defer></script>
   <script data-goatcounter="https://mrandmrsdigital.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  const v=document.getElementById('silkVideo'); if(!v) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const mob=matchMedia('(max-width:760px)').matches;
+  v.src = mob ? 'assets/silk/hero-silk-cherry-mobile.mp4' : 'assets/silk/hero-silk-cherry.mp4';
+  v.addEventListener('playing',()=>{ v.playbackRate=.7; v.classList.add('on'); },{once:true});
+  v.preload='auto'; v.play().catch(()=>{});
+  document.addEventListener('visibilitychange',()=>{ document.hidden ? v.pause() : v.play().catch(()=>{}); });
+})();
+</script>
 </body>
 </html>
